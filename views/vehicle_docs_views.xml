@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record model='ir.ui.view' id='fleet_vehicle_echeance_tree'>
+        <field name="name">fleet.vehicle.echeance.tree</field>
+        <field name="model">fleet.vehicle.echeance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="vehicle_id" options="{'no_create':True}"/>
+                <field name="document_id" options="{'no_create':True}"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model='ir.ui.view' id='fleet_vehicle_echeance_form'>
+        <field name="name">fleet.vehicle.echeance.form</field>
+        <field name="model">fleet.vehicle.echeance</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="vehicle_id" options="{'no_create':True}"/>
+                <field name="document_id" options="{'no_create':True}"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model='ir.ui.view' id='fleet_vehicle_echeance_calendar'>
+        <field name="name">fleet.vehicle.echeance.calendar</field>
+        <field name="model">fleet.vehicle.echeance</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendar View" date_start="date_end" color="document_id" create="0" mode="month"
+                      hide_time="true">
+                <field name="vehicle_id"/>
+                <field name="document_id"/>
+            </calendar>
+        </field>
+    </record>
+    <record model='ir.actions.act_window' id='fleet_vehicle_echeance_act'>
+        <field name="name">Echéance Machines</field>
+        <field name="res_model">fleet.vehicle.echeance</field>
+        <field name="view_mode">calendar,tree,form</field>
+    </record>
+    <menuitem name="Echéances Véhicules" id="menu_echenace_machine" parent="fleet.menu_root" sequence="3"
+              groups="fleet_gmao_management.group_documents_manager,fleet_gmao_management.group_documents_consultation"/>
+    <menuitem action="fleet_vehicle_echeance_act" sequence="1" parent="menu_echenace_machine"
+              id="menu_fleet_vehicle_echeance_act"
+              groups="fleet_gmao_management.group_documents_manager,fleet_gmao_management.group_documents_consultation"/>
+
+    <record model='ir.ui.view' id='fleet_vehicle_administratif_documents_tree'>
+        <field name="name">fleet.vehicle.administratif.documents.tree</field>
+        <field name="model">fleet.vehicle.administratif.documents</field>
+
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="period_count"/>
+                <field name="period_dmy"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model='ir.actions.act_window' id='fleet_vehicle_administratif_documents_act'>
+        <field name="name">Documents Engin</field>
+        <field name="res_model">fleet.vehicle.administratif.documents</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem action="fleet_vehicle_administratif_documents_act" sequence="0" parent="menu_echenace_machine"
+              id="menu_fleet_vehicle_administratif_documents_act"
+              groups="fleet_gmao_management.group_documents_manager,fleet_gmao_management.group_documents_consultation"/>
+    <record id="view_echeance_filter" model="ir.ui.view">
+        <field name="name">echeance.select</field>
+        <field name="model">fleet.vehicle.echeance</field>
+        <field name="arch" type="xml">
+            <search>
+
+                <field name="vehicle_id" string="Code Engin"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="group_by_public_market_id" string="Documents" context="{'group_by':'document_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <!-- filtre form -->
+        <record id="view_fleet_filtre_form" model="ir.ui.view">
+            <field name="name">fleet.filtre.form</field>
+            <field name="model">fleet.filtre</field>
+            <field name="arch" type="xml">
+                <form string="FILTRES">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="vehicle_id" string="Machine"/>
+                            <field name="type_id" required="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Remplacement">
+                                <field name="reparation_ids">
+                                    <tree string="Remplacement" editable="bottom">
+                                        <field name="product_id" required="1"/>
+                                        <field name="qty" required="1"/>
+                                        <field name="option" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Vérifications">
+                                <group col="2">
+                                    <group string="Niveau">
+                                        <field name="checklist_ids1" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name" domain="[('code','=','niveau')]"
+                                                       context="{'default_code': 'niveau'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group string="Graissage">
+                                        <field name="checklist_ids2" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name" domain="[('code','=','graissage')]"
+                                                       context="{'default_code': 'graissage'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group string="Pression">
+                                        <field name="checklist_ids3" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name" domain="[('code','=','pression')]"
+                                                       context="{'default_code': 'pression'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group string="Remplacement huile">
+                                        <field name="checklist_ids4" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name" domain="[('code','=','huile')]"
+                                                       context="{'default_code': 'huile'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group string="Autres entretiens">
+                                        <field name="checklist_ids5" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name" domain="[('code','=','autres')]"
+                                                       context="{'default_code': 'autres'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_fleet_filtre_tree" model="ir.ui.view">
+            <field name="name">fleet.filtre.tree</field>
+            <field name="model">fleet.filtre</field>
+            <field name="arch" type="xml">
+                <tree string="Filtres">
+                    <field name="name"/>
+                    <field name="vehicle_id"/>
+                    <field name="type_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- filtre form -->
+        <record id="view_fleet_filtre_template_form" model="ir.ui.view">
+            <field name="name">fleet.filtre.template.form</field>
+            <field name="model">fleet.filtre.template</field>
+            <field name="arch" type="xml">
+                <form string="Template filtre">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="designation_id"/>
+                            <field name="type_id" required="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Remplacement">
+                                <field name="reparation_ids">
+                                    <tree string="Remplacement" editable="bottom">
+                                        <field name="nomenclature_id" required="1"/>
+                                        <field name="qty" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Vérifications">
+                                <group col="2">
+                                    <group>
+                                        <field name="checklist_ids1">
+                                            <tree string="Niveau" editable="bottom">
+                                                <field name="name" domain="[('code','=','niveau')]"
+                                                       context="{'default_code': 'niveau'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="checklist_ids2">
+                                            <tree string="Graissage" editable="bottom">
+                                                <field name="name" domain="[('code','=','graissage')]"
+                                                       context="{'default_code': 'graissage'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="checklist_ids3">
+                                            <tree string="Pression" editable="bottom">
+                                                <field name="name" domain="[('code','=','pression')]"
+                                                       context="{'default_code': 'pression'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="checklist_ids4">
+                                            <tree string="Remplacement huile" editable="bottom">
+                                                <field name="name" domain="[('code','=','huile')]"
+                                                       context="{'default_code': 'huile'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="checklist_ids5">
+                                            <tree string="Autres entretiens" editable="bottom">
+                                                <field name="name" domain="[('code','=','autres')]"
+                                                       context="{'default_code': 'autres'}"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_filtre_template_tree" model="ir.ui.view">
+            <field name="name">fleet.filtre.template.tree</field>
+            <field name="model">fleet.filtre.template</field>
+            <field name="arch" type="xml">
+                <tree string="FILTRES">
+                    <field name="name"/>
+                    <field name="designation_id"/>
+                    <field name="type_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- action filtre  -->
+        <record id="fleet_vehicle_filtre_act" model="ir.actions.act_window">
+            <field name="name">Tableau d'Entretiens</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fleet.filtre</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="fleet_vehicle_verification_act" model="ir.actions.act_window">
+            <field name="name">Vérifications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fleet.verification</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="view_fleet_filtre_filter" model="ir.ui.view">
+            <field name="name">fleet.filtre.search</field>
+            <field name="model">fleet.filtre</field>
+            <field name="arch" type="xml">
+                <search string="Tableau d'entretien">
+                    <field name="vehicle_id" string="Machine"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_vehicle_id" string="Machines" context="{'group_by':'vehicle_id'}"/>
+                        <filter string="Revision" name="group_by_name" context="{'group_by':'name'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_filtre_template_filter" model="ir.ui.view">
+            <field name="name">fleet.filtre.template.search</field>
+            <field name="model">fleet.filtre.template</field>
+            <field name="arch" type="xml">
+                <search string="Tableau d'entretien template">
+                    <field name="designation_id" string="Type de machine"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_designation_id" string="Type de machine"
+                                context="{'group_by':'designation_id'}"/>
+                        <filter string="Revision" name="group_by_name" context="{'group_by':'name'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="fleet_filtre_template_type_form" model="ir.ui.view">
+            <field name="name">fleet.filtre.template.type.form</field>
+            <field name="model">fleet.filtre.template.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" attrs="{'invisible':[('sans_suivi','=',True)]}"/>
+                                <field name="sans_suivi"/>
+                            </group>
+                            <group>
+                                <field name="pas_bouclage"/>
+                                <field name="seuil_bouclage"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="fleet_filtre_template_type_tree" model="ir.ui.view">
+            <field name="name">fleet.filtre.template.type.tree</field>
+            <field name="model">fleet.filtre.template.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="pas_bouclage"/>
+                    <field name="seuil_bouclage"/>
+                    <field name="sans_suivi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="fleet_filtre_template_type_act" model="ir.actions.act_window">
+            <field name="name">Modéles Révision</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fleet.filtre.template.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Entretien et vérification" id="menu_flitre_verification_machine" parent="fleet.menu_root"
+                  sequence="4"
+                  groups="fleet_gmao_management.group_documents_manager,fleet_gmao_management.group_documents_consultation"/>
+        <menuitem action="fleet_vehicle_filtre_act" sequence="1" parent="menu_flitre_verification_machine"
+                  id="menu_fleet_vehicle_filtre_act"
+                  groups="fleet_gmao_management.group_documents_manager,fleet_gmao_management.group_documents_consultation"/>
+        <menuitem action="fleet_vehicle_verification_act" sequence="1" parent="menu_flitre_verification_machine"
+                  id="menu_fleet_vehicle_verification_act"
+                  groups="fleet_gmao_management.group_documents_manager,fleet_gmao_management.group_documents_consultation"/>
+        <menuitem action="fleet_filtre_template_type_act" sequence="1" parent="menu_flitre_verification_machine"
+                  id="menu_fleet_filtre_template_type_act"
+                  groups="fleet_gmao_management.group_documents_manager,fleet_gmao_management.group_documents_consultation"/>
+
+    </data>
+</odoo>
