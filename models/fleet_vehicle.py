@@ -29,7 +29,7 @@ class FleetVehicleAdministratifDocuments(models.Model):
 	period_dmy = fields.Selection([('d', 'Jours'), ('m', 'Mois'), ('y', 'Années')], 'Période', default="y")
 
 
-class fleetVehicleEcheance(models.Model):
+class FleetVehicleEcheance(models.Model):
 	_name = 'fleet.vehicle.echeance'
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 
