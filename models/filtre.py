@@ -11,7 +11,9 @@ class fleet_filtre(models.Model):
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 
 	name = fields.Integer('Révision', required=True)
+
 	reparation_ids = fields.One2many("fleet.line.reparation", "filtre_id", "Remplacement pieces")
+
 	checklist_ids1 = fields.One2many('fleet.line.checklist', 'filtre_id', 'Niveau',
 	                                 domain=[('name.code', '=', 'niveau')])
 	checklist_ids2 = fields.One2many('fleet.line.checklist', 'filtre_id', 'Graissage',
@@ -22,6 +24,7 @@ class fleet_filtre(models.Model):
 	                                 domain=[('name.code', '=', 'huile')])
 	checklist_ids5 = fields.One2many('fleet.line.checklist', 'filtre_id', 'Autres entretiens',
 	                                 domain=[('name.code', '=', 'autres')])
+	
 	vehicle_id = fields.Many2one("fleet.vehicle", "Machine", required=True, ondelete="restrict")
 	active = fields.Boolean('Active', default=True)
 	type_id = fields.Many2one("fleet.filtre.template.type", "Type")
@@ -60,7 +63,6 @@ class fleet_filtre(models.Model):
 		self.env['fleet.line.reparation'].browse(rep_line_ids).write({'filtre_id': result})
 		return result
 
-
 class fleet_line_reparation(models.Model):
 	_name = 'fleet.line.reparation'
 	_inherit = ['mail.thread', 'mail.activity.mixin']
@@ -85,13 +87,14 @@ class fleet_line_reparation(models.Model):
 		self.uom_id = self.product_id.uom_id.id
 		self.price_unit = self.product_id.standard_price
 
-
 class fleet_filtre_template(models.Model):
 	_name = 'fleet.filtre.template'
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 
 	name = fields.Integer('Révision', required=True)
+
 	reparation_ids = fields.One2many("fleet.line.reparation", "filtre_template_id", "Reparations")
+
 	checklist_ids1 = fields.One2many('fleet.line.checklist', 'filtre_template_id', 'Niveau',
 	                                 domain=[('name.code', '=', 'niveau')])
 	checklist_ids2 = fields.One2many('fleet.line.checklist', 'filtre_template_id', 'Graissage',
@@ -104,6 +107,7 @@ class fleet_filtre_template(models.Model):
 	                                 domain=[('name.code', '=', 'autres')])
 	designation_id = fields.Many2one("product.template.type", "Type de machine", required=True,
 	                                 ondelete='restrict')
+	
 	type_id = fields.Many2one("fleet.filtre.template.type", "Type")
 
 	def copy(self, default=None):
@@ -140,15 +144,6 @@ class fleet_filtre_template(models.Model):
 		self.env['fleet.line.reparation'].write(rep_line_ids, {'filtre_template_id': result})
 		return result
 
-	def unlink(self):
-		group_long_name = ['gmao.group_product_admin', 'gmao.group_product_manager']
-		if not self.env['res.users'].has_group(group_long_name[0]) and not self.env['res.users'].has_group(
-				group_long_name[1]):
-			raise UserError(
-				"Pour supprimer ce document, vous devez appartenir au groupe(Suppression de machines et éléments associés)"
-				".Veuillez contacter votre administrateur!")
-		return super(fleet_filtre_template, self).unlink()
-
 
 class fleet_filtre_template_type(models.Model):
 	_name = 'fleet.filtre.template.type'
@@ -174,11 +169,3 @@ class fleet_filtre_template_type(models.Model):
 
 		return res
 
-	def unlink(self):
-		group_long_name = ['gmao.group_product_admin', 'gmao.group_product_manager']
-		if not self.env['res.users'].has_group(group_long_name[0]) and not self.env['res.users'].has_group(
-				group_long_name[1]):
-			raise UserError(
-				"Pour supprimer ce document, vous devez appartenir au groupe(Suppression de machines et éléments associés)"
-				".Veuillez contacter votre administrateur!")
-		return super(fleet_filtre_template_type, self).unlink()

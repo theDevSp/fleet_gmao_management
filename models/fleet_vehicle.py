@@ -56,18 +56,16 @@ class FleetVehicle(models.Model):
 	_inherit = ['fleet.vehicle']
 	_name = 'fleet.vehicle'
 
-	product_id = fields.Many2one('product.product', 'Désignation', required=True)
-	lot_id = fields.Many2one('stock.production.lot', 'Numéro de série', index=True)
+
+	class_id = fields.Many2one('fleet.vehicle.class', 'Type', ondelete="restrict")
+	serial_number = fields.Char('Numéro de série', index=True)
 	designation_id = fields.Many2one('product.template.type', 'Type', ondelete="restrict")
-	designation = fields.Char('Désignation')
 	category_id = fields.Many2one('fleet.vehicle.category', 'Catégorie')
 	brand_id = fields.Many2one('product.brand','Marque')
 	numero_moteur = fields.Char("Numéro du Moteur")
 	type_moteur = fields.Char("Type du Moteur")
 	model_id = fields.Many2one('fleet.vehicle.model', 'Model',required=False, help='Model of the vehicle')
 
-	nomenclature_id = fields.Many2one(related='product_id.nomenclature_id', string='Marque')
-	categ_id = fields.Many2one(related='product_id.categ_id', string='Catégorie')
 	location_id = fields.Many2one('stock.location', 'Emplacement(Location)')
 	capacity = fields.Char('Capacité')
 	odometer_unit = fields.Selection([('heures',"Heures"),('kilometers', 'Kilometers')], 'Odometer Unit',required=True)
@@ -110,6 +108,14 @@ class FleetVehicle(models.Model):
 	montant_total = fields.Float(u"Montant Acquisition (TTC)", compute='_compute_tva', readonly=True)
 	doc_ids = fields.One2many("fleet.vehicle.echeance",'vehicle_id',u"")
 
+	accessible = fields.Boolean('accessible',compute="_compute_accessibility",store=True)
+
+	
+	@api.depends_context('show')
+	def _compute_accessibility(self):
+		for vehicle in self:
+			vehicle.accessible = False if not self.env.context.get('show') else True
+		
 
 	@api.depends('taxes_id')
 	def _compute_tva(self):
@@ -124,16 +130,11 @@ class FleetVehicle(models.Model):
 
 	@api.model
 	def create(self, vals):
-		group_long_name = "gmao.group_product_admin"
-
-		if not self.env['res.users'].has_group(group_long_name):
-			raise UserError("Erreur droit d'accès! \n Vous n'êtes pas autorisé à créer un engin!")
-
+		res = super(FleetVehicle, self).create(vals)
 		# Create a location for the engine
 		if vals.get("code"):
-			product = self.env["product.product"].browse(vals.get('product_id'))
-			product_name = product.name
-			location_name = product_name + "/" + vals.get("code")
+			
+			location_name = res.name + "/" + res.code
 			data_location_engine = {
 				"name": location_name,
 				'usage': 'internal',
@@ -141,7 +142,7 @@ class FleetVehicle(models.Model):
 			location_id = self.env['stock.location'].create(data_location_engine)
 			vals['location_id'] = location_id.id
 
-		return super(FleetVehicle, self).create(vals)
+		return res
 
 	def write(self, vals):
 		group_long_name = "gmao.group_product_admin"

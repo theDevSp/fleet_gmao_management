@@ -65,13 +65,13 @@
 
 
                                     <group>
-                                        <label for="product_id" />
+                                        <label for="name" />
                                         <h4>
-                                            <field name="product_id" class="oe_inline" options="{'no_create': True}"/>
+                                            <field name="name" class="oe_inline"/>
                                         </h4>
-                                        <label for="lot_id" options="{'no_create': True}"/>
+                                        <label for="serial_number" />
                                         <h4>
-                                            <field name="lot_id" class="oe_inline"/>
+                                            <field name="serial_number" class="oe_inline"/>
                                         </h4>
                                     </group>
                                     <group>
@@ -177,6 +177,7 @@
                                 </group>
                             </group>
                             <hr/>
+
                             <group col="2">
                                 <group string="Identification">
                                     <field name="location_id" options="{'no_create': True}"/>
@@ -184,7 +185,6 @@
                                     <field name="capacity"/>
                                     <field name="vin_sn"/>
                                     <field name="brand_id"/>
-                                    <field name="designation_id"/>
                                     <field name="designation"/>
                                     <field name="category_id"/>
                                 </group>

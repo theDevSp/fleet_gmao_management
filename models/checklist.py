@@ -30,17 +30,6 @@ class fleet_verification(models.Model):
 	code = fields.Selection([('niveau', 'Niveau'), ('graissage', 'Graissage'), ('pression', 'Pression'),
 	                         ('huile', 'Remplacement huile'), ('autres', 'Autres entretiens')], "Code")
 
-	def unlink(self):
-		group_long_name = ['gmao.group_product_admin', 'gmao.group_product_manager']
-		if not self.env['res.users'].has_group(group_long_name[0]) and not self.env['res.users'].has_group(
-				group_long_name[1]):
-			raise UserError(
-				"Erreur droit d'accès! \n Vous n'êtes pas autorisé à créer un engin! Pour supprimer ce document,"
-				" vous devez appartenrir au groupe(Suppression de machines et éléments associés).Veuillez contacter "
-				"votre administrateur!")
-		return super(fleet_verification, self).unlink()
-
-
 class fleet_verification_type(models.Model):
 	_name = 'fleet.verification.type'
 	_inherit = ['mail.thread', 'mail.activity.mixin']
@@ -48,11 +37,3 @@ class fleet_verification_type(models.Model):
 	name = fields.Char('Nom')
 	code = fields.Integer("Code")
 
-
-	def unlink(self):
-		group_long_name = ['gmao.group_product_admin', 'gmao.group_product_manager']
-		if not self.env['res.users'].has_group(group_long_name[0]) and not self.env['res.users'].has_group(
-				group_long_name[1]):
-			raise UserError("Pour supprimer ce document, vous devez appartenrir au groupe"
-			                "(Suppression de machines et éléments associés).Veuillez contacter votre administrateur!")
-		return super(fleet_verification_type, self).unlink()
