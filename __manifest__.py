@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account_fiscal_year_period', 'fleet','construction_site_management'],
+    'depends': ['base', 'account_fiscal_year_period', 'fleet','construction_site_management','sale', 'purchase', 'stock',],
 
     # always loaded
     'data': [
