@@ -15,6 +15,7 @@ class fleet_line_checklist(models.Model):
 	log_id = fields.Many2one("fleet.vehicle.log.services", "Service")
 	filtre_id = fields.Many2one('fleet.filtre', "Filtre")
 	filtre_template_id = fields.Many2one('fleet.filtre.template', "Template")
+	pm_id = fields.Many2one('fleet.vehicle.pm',"Maintenance programmé")
 
 	_sql_constraints = [
 		('name_filtre_id_uniq', 'unique(name,filtre_id)', 'Cette vérification existe déjà !'),
