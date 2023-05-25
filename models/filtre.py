@@ -79,6 +79,7 @@ class fleet_line_reparation(models.Model):
 	log_id = fields.Many2one("fleet.vehicle.log.services", "Service")
 	filtre_id = fields.Many2one('fleet.filtre', 'Filtre')
 	filtre_template_id = fields.Many2one('fleet.filtre.template', "Template")
+	pm_id = fields.Many2one('fleet.vehicle.pm',"Maintenance programmé")
 
 	@api.onchange('product_id')
 	def onchange_product_id(self):
