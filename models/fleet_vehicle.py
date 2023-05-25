@@ -108,15 +108,6 @@ class FleetVehicle(models.Model):
 	montant_total = fields.Float(u"Montant Acquisition (TTC)", compute='_compute_tva', readonly=True)
 	doc_ids = fields.One2many("fleet.vehicle.echeance",'vehicle_id',u"")
 
-	accessible = fields.Boolean('accessible',compute="_compute_accessibility",store=True)
-
-	
-	@api.depends_context('show')
-	def _compute_accessibility(self):
-		for vehicle in self:
-			vehicle.accessible = False if not self.env.context.get('show') else True
-		
-
 	@api.depends('taxes_id')
 	def _compute_tva(self):
 		self.montant_tva = 0
