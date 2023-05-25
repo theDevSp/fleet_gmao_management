@@ -68,7 +68,6 @@ class fleet_line_reparation(models.Model):
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 
 	name = fields.Char('Description')
-	nomenclature_id = fields.Many2one('product.nomenclature', 'Modèle', ondelete='restrict')
 	product_id = fields.Many2one('product.product', 'Référence Pièces',
 	                             domain="[('nomenclature_id.product_is','=','piece')]",
 	                             ondelete='restrict')
