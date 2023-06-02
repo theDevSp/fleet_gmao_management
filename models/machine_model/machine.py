@@ -1,67 +1,18 @@
-# -*- coding: utf-8 -*-
+
 import datetime
-
-from dateutil.relativedelta import relativedelta
 from odoo import models, fields, api
-from odoo.exceptions import AccessError, UserError, ValidationError
-
-
-class FleetVehicleCategory(models.Model):
-	_name = 'fleet.vehicle.category'
-
-	name = fields.Char('Nom', required=True)
-	note = fields.Text('Description')
-
-
-class FleetVehicleModification(models.Model):
-	_name = 'fleet.vehicle.modification'
-
-	vehicle_id = fields.Many2one('fleet.vehicle', 'Engin')
-	related_vehicle_id = fields.Many2one('fleet.vehicle', 'Engin rattaché')
-	date = fields.Date('Date')
-
-
-class FleetVehicleAdministratifDocuments(models.Model):
-	_name = 'fleet.vehicle.administratif.documents'
-
-	name = fields.Char('Document', required=True)
-	period_count = fields.Integer("Durée de Période")
-	period_dmy = fields.Selection([('d', 'Jours'), ('m', 'Mois'), ('y', 'Années')], 'Période', default="y")
-
-
-class FleetVehicleEcheance(models.Model):
-	_name = 'fleet.vehicle.echeance'
-	_inherit = ['mail.thread', 'mail.activity.mixin']
-
-	vehicle_id = fields.Many2one('fleet.vehicle', 'Engin', required=True)
-	document_id = fields.Many2one('fleet.vehicle.administratif.documents','Document',required=True)
-	date_start = fields.Date('Date Début',required=True)
-	date_end = fields.Date('Date Fin',required=True)
-
-	@api.onchange("date_start", "document_id", "date_start")
-	def onchange_action_liquide(self):
-		if self.document_id and self.date_start:
-			if self.document_id.period_dmy == 'd':
-				self.date_end = (datetime.datetime.strptime(self.date_start, '%Y-%m-%d') + relativedelta(
-					days=+ self.document_id.period_count))
-			elif self.document_id.period_dmy == 'm':
-				self.date_end = (datetime.datetime.strptime(self.date_start, '%Y-%m-%d') + relativedelta(
-					months=+ self.document_id.period_count))
-			else:
-				self.date_end = (datetime.datetime.strptime(str(self.date_start), '%Y-%m-%d') + relativedelta(
-					years=+ self.document_id.period_count))
-
+from odoo.exceptions import  UserError
 
 class FleetVehicle(models.Model):
 	_inherit = ['fleet.vehicle']
 	_name = 'fleet.vehicle'
-
+	# _inherit = ['mail.thread', 'mail.activity.mixin']
 
 	class_id = fields.Many2one('fleet.vehicle.class', 'Type', ondelete="restrict")
 	serial_number = fields.Char('Numéro de série', index=True)
-	designation_id = fields.Many2one('product.template.type', 'Type', ondelete="restrict")
+	designation_id = fields.Many2one('fleet.vehicle.type', 'Type', ondelete="restrict")
 	category_id = fields.Many2one('fleet.vehicle.category', 'Catégorie')
-	brand_id = fields.Many2one('product.brand','Marque')
+	brand_id = fields.Many2one('fleet.vehicle.brand','Marque')
 	numero_moteur = fields.Char("Numéro du Moteur")
 	type_moteur = fields.Char("Type du Moteur")
 	model_id = fields.Many2one('fleet.vehicle.model', 'Model',required=False, help='Model of the vehicle')

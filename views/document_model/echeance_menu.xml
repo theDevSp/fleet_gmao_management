@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Échéances" id="echeances_main_menu" parent="documents_base_menu" sequence="2" action="echeances_action"/>
+</odoo>

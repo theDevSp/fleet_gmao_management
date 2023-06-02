@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Maintenance programmée" id="maintenance_programmee_main_menu" parent="entretien_verification_base_menu" sequence="5" action="maintenance_programmee_action"/>
+</odoo>

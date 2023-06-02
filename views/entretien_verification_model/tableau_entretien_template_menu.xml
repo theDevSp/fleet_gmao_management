@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Tableau d'entretien template" id="tableau_entretien_template_main_menu" parent="entretien_verification_base_menu" sequence="2" action="tableau_entretien_template_action"/>
+</odoo>

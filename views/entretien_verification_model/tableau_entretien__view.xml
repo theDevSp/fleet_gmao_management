@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='tableau_entretien_action' model='ir.actions.act_window'>
+        <field name="name">Tableau d'entretien</field>
+        <field name="res_model">fleet.filtre</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+    <record id="tableau_entretien_tree" model="ir.ui.view">
+        <field name="name">Tableau d'entretien</field>
+        <field name="model">fleet.filtre</field>
+        <field name="arch" type="xml">
+            <tree string="Les tableaux d'entretien" multi_edit="1" sample="1" class="table">
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="type_id"/>
+            </tree>
+        </field>
+    </record>
+   
+    <record id="tableau_entretien_view_form" model="ir.ui.view">
+        <field name="name">Tableau d'entretien - Form</field>
+        <field name="model">fleet.filtre</field>
+        <field name="arch" type="xml">
+            <form string="Tableaux d'entretien">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="vehicle_id" string="Machine" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="type_id" required="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Remplacement">
+                            <field name="reparation_ids">
+                                <tree string="Remplacement" editable="bottom">
+                                    <field name="product_id" required="1"/>
+                                    <field name="qty" required="1"/>
+                                    <field name="option" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Vérifications">
+                            <group col="2">
+                                <group string="Niveau">
+                                    <field name="checklist_ids1" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" domain="[('code','=','niveau')]"
+                                                    context="{'default_code': 'niveau'}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Graissage">
+                                    <field name="checklist_ids2" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" domain="[('code','=','graissage')]"
+                                                    context="{'default_code': 'graissage'}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Pression">
+                                    <field name="checklist_ids3" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" domain="[('code','=','pression')]"
+                                                    context="{'default_code': 'pression'}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Remplacement huile">
+                                    <field name="checklist_ids4" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" domain="[('code','=','huile')]"
+                                                    context="{'default_code': 'huile'}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Autres entretiens">
+                                    <field name="checklist_ids5" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" domain="[('code','=','autres')]"
+                                                    context="{'default_code': 'autres'}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="tableau_entretien_search" model="ir.ui.view">
+        <field name="name">Recherche - Tableau d'entretien</field>
+        <field name="model">fleet.filtre</field>
+        <field name="arch" type="xml">
+            <search string="Tableau d'entretien">
+               <field name="vehicle_id" string="Machine"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_vehicle_id" string="Machines" context="{'group_by':'vehicle_id'}"/>
+                    <filter string="Revision" name="group_by_name" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

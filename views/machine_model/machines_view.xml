@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='machines_action' model='ir.actions.act_window'>
+        <field name="name">Machines</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+    <record id="machines_tree" model="ir.ui.view">
+        <field name="name">Liste des machines</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des machines" multi_edit="1" sample="1" class="table">
+                <field name="numero_moteur"/>
+                <field name="emplacement_chantier_id"/>
+                <field name="chantier_id"/>
+                <!-- <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="emplacement_source_id"/>
+                <field name="emplacement_chantier_id"/>
+                <field name="notes"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-warning="state == 'annulee'" decoration-success="state == 'validee'"/> -->
+            </tree>
+        </field>
+    </record>
+   
+    <record id="fleet_vehicle_view_form_inherit" model="ir.ui.view">
+        <field name="name">Machine - Form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="replace">
+                <form string="Vehicle">
+                    <header>
+                        <field name="state_breakdown" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
+                    </header>
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <field name="currency_id" invisible="1"/>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="open_assignation_logs"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-history">
+                                <field name="history_count" widget="statinfo" string="Drivers History"/>
+                            </button>
+                            <button name="return_action_to_open"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-book"
+                                    context="{'xml_id':'fleet_vehicle_log_contract_action'}"
+                                    help="show the contract for this vehicle">
+                                <field name="contract_count" widget="statinfo" string="Contracts"/>
+                            </button>
+                            <button name="return_action_to_open"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-wrench"
+                                    context="{'xml_id':'fleet_vehicle_log_services_action'}"
+                                    help="show the services logs for this vehicle">
+                                <field name="service_count" widget="statinfo" string="Services"/>
+                            </button>
+                            <button name="return_action_to_open"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-tachometer"
+                                    context="{'xml_id':'fleet_vehicle_odometer_action'}"
+                                    help="show the odometer logs for this vehicle">
+                                <!--                                        attrs="{'invisible': [('vehicle_type', '!=', 'car')]}"-->
+
+                                <field name="odometer_count" widget="statinfo" string="Odometer"/>
+                            </button>
+                        </div>
+
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                                attrs="{'invisible': [('active', '=', True)]}"/>
+                        <widget name="web_ribbon" title="Garantie" bg_color="bg-success"
+                                attrs="{'invisible': [('garantie', '=', False)]}"/>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card border-dark mb-3 bg-info">
+                                    <div class="card-header text-center">
+                                        <h5>Référence</h5>
+                                    </div>
+                                    <div class="card-body text-dark text-center">
+                                        <h3>
+                                            <field name="name"/>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card border-dark mb-3 bg-info">
+                                    <div class="card-header text-center">
+                                        <h5>Numéro de série</h5>
+                                    </div>
+                                    <div class="card-body text-dark text-center">
+                                        <h3>
+                                            <field name="serial_number"/>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card border-dark mb-3 bg-info">
+                                    <div class="card-header text-center">
+                                        <h5>Numéro d'immatriculation</h5>
+                                    </div>
+                                    <div class="card-body text-dark text-center">
+                                        <h3>
+                                            <field name="license_plate"/>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card border-dark mb-3 bg-info">
+                                    <div class="card-header text-center">
+                                        <h5>Organisme</h5>
+                                    </div>
+                                    <div class="card-body text-dark text-center">
+                                        <h3>
+                                            <field name="company_id"/>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <field name="active" invisible="1"/>
+                            <field name="garantie" invisible="1"/>
+                        </div>
+
+                        <hr/>
+                         <label for="company_id" string="Organisme"/>
+                        <field name="company_id"/>
+                        
+                        <group col="2">
+                            <group string="Affectation">
+                                <field name="driver_id" domain="['|', ('company_id', '=', False ), ('company_id', '=', company_id)]"/>
+                                <field name="chantier_id" options="{'no_create': True}"/>
+                                <field name="emplacement_chantier_id"  options="{'no_create': True}"/>
+                            </group>
+                            <group string="Observation">
+                                <field name="notes"/>
+                            </group>
+                        </group>
+                        <hr/>
+
+                        <group col="2">
+                            <group string="Identification">
+                                <field name="location_id" options="{'no_create': True}"/>
+                                <field name="code"/>
+                                <field name="capacity"/>
+                                <field name="vin_sn"/>
+                                <field name="brand_id"/>
+                                <field name="designation_id"/>
+                                <field name="category_id"/>
+                            </group>
+                            <group string="Moteur/Compteur">
+                                <label for="odometer"/>
+                                <div>
+                                    <field name="odometer" class="oe_inline ml-1"/>
+                                    <field name="odometer_unit" class="oe_inline"/>
+                                </div>
+                                <field name="pas_bouclage"/>
+                                <field name="seuil_bouclage"/>
+                                <field name="type_moteur"/>
+                                <field name="numero_moteur"/>
+                            </group>
+                        </group>
+                        <hr/>
+                        <group col="2" string="Contrat et Réglement">
+                            <group>
+                                <field name="partner_id" options="{'no_create': True}"/>
+                                <field name="annee"/>
+                                <field name="contract_number"/>
+                                <field name="mode_reglement"/>
+                                <field name="folder"/>
+                                <field name="garantie_etat"/>
+                                <field name="date_debut_garantie" attrs="{'required':[('garantie','=',True)]}"/>
+                                <field name="date_fin_garantie"/>
+                                <field name="date_delivery"/>
+                                <field name="date_mise_service"/>
+                            </group>
+                            <group>
+                                <field name="date_acquisition"/>
+                                <field name="acquisition_date"/>
+                                <field name="acquisition_amount" widget="monetary"
+                                        options="{'currency_field': 'currency_id'}"/>
+                                <field name="taxes_id"/>
+                                <field name="montant_tva" widget="monetary"/>
+                                <field name="montant_total" widget="monetary"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="machines_search" model="ir.ui.view">
+        <field name="name">Recherche - Machines</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- <field name="name"/> -->
+                <!-- <field name="vehicle_chantier_id"/> -->
+                <field name="chantier_id"/>
+                <searchpanel>
+                    <!-- <field name="chantier_id" icon="fa-city" enable_counters="1" select="multi"/> -->
+                    <!-- <field name="vehicle_chantier_id" icon="fa-city" enable_counters="1" select="multi"/> -->
+                    <!-- <field name="brand_id" icon="fa-barcode" enable_counters="1" select="multi"/> -->
+                    <!-- <field name="brand_id" icon="fa-align-center" enable_counters="1" select="multi"/> -->
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+</odoo>

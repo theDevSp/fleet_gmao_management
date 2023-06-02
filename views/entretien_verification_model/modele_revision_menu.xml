@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Modèle Révision" id="modele_revision_main_menu" parent="entretien_verification_base_menu" sequence="3" action="modele_revision_action"/>
+</odoo>
