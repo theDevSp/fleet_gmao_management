@@ -11,15 +11,36 @@
         <field name="model">fleet.vehicle</field>
         <field name="arch" type="xml">
             <tree string="Liste des machines" multi_edit="1" sample="1" class="table">
-                <field name="numero_moteur"/>
-                <field name="emplacement_chantier_id"/>
+                <field name="name"/>
+                <field name="serial_number"/>
+                <field name="license_plate"/>
+                <field name="driver_id"/>
                 <field name="chantier_id"/>
-                <!-- <field name="date_start"/>
-                <field name="date_end"/>
-                <field name="emplacement_source_id"/>
                 <field name="emplacement_chantier_id"/>
-                <field name="notes"/>
-                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-warning="state == 'annulee'" decoration-success="state == 'validee'"/> -->
+                <field name="company_id"/>
+                <field name="brand_id"/>
+                <field name="category_id"/>
+                <field name="designation_id"/>
+                <field name="location_id" optional="show"/>
+                <field name="code" optional="show"/>
+                <field name="capacity" optional="show"/>
+                <field name="vin_sn" optional="show"/>
+                <field name="category_id" optional="show"/>
+                <field name="odometer" optional="show"/>
+                <field name="type_moteur" optional="show"/>
+                <field name="numero_moteur" optional="show"/>
+                <field name="partner_id" optional="show"/>
+                <field name="annee" optional="show"/>
+                <field name="contract_number" optional="show"/>
+                <field name="folder" optional="show"/>
+                <field name="garantie_etat" optional="show"/>
+                <field name="date_debut_garantie" optional="show"/>
+                <field name="date_fin_garantie" optional="show"/>
+                <field name="acquisition_amount" optional="show"/>
+                <field name="taxes_id" optional="show"/>
+                <field name="montant_tva" optional="show"/>
+                <field name="montant_total" optional="show"/>
+                <field name="state_breakdown" optional="show"/>
             </tree>
         </field>
     </record>
@@ -116,84 +137,371 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="card border-dark mb-3 bg-info">
-                                    <div class="card-header text-center">
-                                        <h5>Organisme</h5>
-                                    </div>
-                                    <div class="card-body text-dark text-center">
-                                        <h3>
-                                            <field name="company_id"/>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
                             <field name="active" invisible="1"/>
                             <field name="garantie" invisible="1"/>
                         </div>
 
-                        <hr/>
-                         <label for="company_id" string="Organisme"/>
-                        <field name="company_id"/>
-                        
-                        <group col="2">
-                            <group string="Affectation">
-                                <field name="driver_id" domain="['|', ('company_id', '=', False ), ('company_id', '=', company_id)]"/>
-                                <field name="chantier_id" options="{'no_create': True}"/>
-                                <field name="emplacement_chantier_id"  options="{'no_create': True}"/>
-                            </group>
-                            <group string="Observation">
-                                <field name="notes"/>
-                            </group>
-                        </group>
-                        <hr/>
-
-                        <group col="2">
-                            <group string="Identification">
-                                <field name="location_id" options="{'no_create': True}"/>
-                                <field name="code"/>
-                                <field name="capacity"/>
-                                <field name="vin_sn"/>
-                                <field name="brand_id"/>
-                                <field name="designation_id"/>
-                                <field name="category_id"/>
-                            </group>
-                            <group string="Moteur/Compteur">
-                                <label for="odometer"/>
-                                <div>
-                                    <field name="odometer" class="oe_inline ml-1"/>
-                                    <field name="odometer_unit" class="oe_inline"/>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="card border-dark mb-3 bg-light">
+                                    <div class="card-header">Affectation</div>
+                                    <div class="card-body text-dark">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="driver_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-user form-control-icon"></span>
+                                                        <field name="driver_id" options="{'no_create': True, 'no_open': True}" domain="['|', ('company_id', '=', False ), ('company_id', '=', company_id)]" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="chantier_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-city form-control-icon"></span>
+                                                        <field name="chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="emplacement_chantier_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-users form-control-icon"></span>
+                                                        <field name="emplacement_chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="company_id" string="Organisme" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-building form-control-icon"></span>
+                                                        <field name="company_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="notes" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-comment form-control-icon"></span>
+                                                        <field name="notes" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <field name="pas_bouclage"/>
-                                <field name="seuil_bouclage"/>
-                                <field name="type_moteur"/>
-                                <field name="numero_moteur"/>
-                            </group>
-                        </group>
-                        <hr/>
-                        <group col="2" string="Contrat et Réglement">
-                            <group>
-                                <field name="partner_id" options="{'no_create': True}"/>
-                                <field name="annee"/>
-                                <field name="contract_number"/>
-                                <field name="mode_reglement"/>
-                                <field name="folder"/>
-                                <field name="garantie_etat"/>
-                                <field name="date_debut_garantie" attrs="{'required':[('garantie','=',True)]}"/>
-                                <field name="date_fin_garantie"/>
-                                <field name="date_delivery"/>
-                                <field name="date_mise_service"/>
-                            </group>
-                            <group>
-                                <field name="date_acquisition"/>
-                                <field name="acquisition_date"/>
-                                <field name="acquisition_amount" widget="monetary"
-                                        options="{'currency_field': 'currency_id'}"/>
-                                <field name="taxes_id"/>
-                                <field name="montant_tva" widget="monetary"/>
-                                <field name="montant_total" widget="monetary"/>
-                            </group>
-                        </group>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card border-dark mb-3 bg-light">
+                                    <div class="card-header">Identification</div>
+                                    <div class="card-body text-dark">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="location_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-users form-control-icon"></span>
+                                                        <field name="location_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="code" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-barcode form-control-icon"></span>
+                                                        <field name="code" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="capacity" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-warehouse form-control-icon"></span>
+                                                        <field name="capacity" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="vin_sn" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-file-contract form-control-icon"></span>
+                                                        <field name="vin_sn" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="brand_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-car form-control-icon"></span>
+                                                        <field name="brand_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="designation_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-align-center form-control-icon"></span>
+                                                        <field name="designation_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="category_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-car form-control-icon"></span>
+                                                        <field name="category_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div class="card border-dark mb-3 bg-light">
+                                    <div class="card-header">Moteur/Compteur</div>
+                                    <div class="card-body text-dark">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="odometer" string="Odomètre" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-tachometer-alt form-control-icon"></span>
+                                                        <field name="odometer" class="form-control oe_inline ml-1"/>
+                                                        <field name="odometer_unit" class="form-control oe_inline"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="pas_bouclage" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fa fa-repeat form-control-icon"></span>
+                                                        <field name="pas_bouclage" class="form-control "/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="seuil_bouclage" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fa fa-repeat form-control-icon"></span>
+                                                        <field name="seuil_bouclage" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="type_moteur" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-car form-control-icon"></span>
+                                                        <field name="type_moteur" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="numero_moteur" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-align-center form-control-icon"></span>
+                                                        <field name="numero_moteur" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div class="card border-dark mb-3 bg-light">
+                                    <div class="card-header">Contrat et Réglement</div>
+                                    <div class="card-body text-dark">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="partner_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-user form-control-icon"></span>
+                                                        <field name="partner_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="annee" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-calendar form-control-icon"></span>
+                                                        <field name="annee" class="form-control "/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="contract_number" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-file-contract form-control-icon"></span>
+                                                        <field name="contract_number" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="mode_reglement" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
+                                                        <field name="mode_reglement" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="folder" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-folder form-control-icon"></span>
+                                                        <field name="folder" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="garantie_etat" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-certificate form-control-icon"></span>
+                                                        <field name="garantie_etat" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="date_debut_garantie" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-calendar form-control-icon"></span>
+                                                        <field name="date_debut_garantie" attrs="{'required':[('garantie','=',True)]}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="date_fin_garantie" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-calendar form-control-icon"></span>
+                                                        <field name="date_fin_garantie" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="date_delivery" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-calendar form-control-icon"></span>
+                                                        <field name="date_delivery" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="date_mise_service" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-calendar form-control-icon"></span>
+                                                        <field name="date_mise_service" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="date_acquisition" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-calendar form-control-icon"></span>
+                                                        <field name="date_acquisition" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="acquisition_date" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-calendar form-control-icon"></span>
+                                                        <field name="acquisition_date" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="acquisition_amount" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
+                                                        <field name="acquisition_amount"  widget="monetary" options="{'currency_field': 'currency_id'}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="taxes_id" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
+                                                        <field name="taxes_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="montant_tva" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
+                                                        <field name="montant_tva" widget="monetary" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="montant_total" class=""/>
+                                                <div class="main">
+                                                    <div class="form-group">
+                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
+                                                        <field name="montant_total" widget="monetary" class="form-control"/>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids"/>
@@ -211,14 +519,16 @@
         <field name="model">fleet.vehicle</field>
         <field name="arch" type="xml">
             <search>
-                <!-- <field name="name"/> -->
-                <!-- <field name="vehicle_chantier_id"/> -->
+                <field name="name"/>
+                <field name="code"/>
                 <field name="chantier_id"/>
+                <field name="driver_id"/>
                 <searchpanel>
-                    <!-- <field name="chantier_id" icon="fa-city" enable_counters="1" select="multi"/> -->
-                    <!-- <field name="vehicle_chantier_id" icon="fa-city" enable_counters="1" select="multi"/> -->
-                    <!-- <field name="brand_id" icon="fa-barcode" enable_counters="1" select="multi"/> -->
-                    <!-- <field name="brand_id" icon="fa-align-center" enable_counters="1" select="multi"/> -->
+                    <field name="chantier_id" icon="fa-city" enable_counters="1" select="multi"/>
+                    <field name="driver_id" icon="fa-user" enable_counters="1" select="multi"/>
+                    <field name="brand_id" icon="fa-barcode" enable_counters="1" select="multi"/>
+                    <field name="category_id" icon="fa-car" enable_counters="1" select="multi"/>
+                    <field name="designation_id" icon="fa-car" enable_counters="1" select="multi"/>
                 </searchpanel>
             </search>
         </field>

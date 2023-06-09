@@ -18,8 +18,7 @@ class fleet_filtre_template(models.Model):
 	                                 domain=[('name.code', '=', 'huile')])
 	checklist_ids5 = fields.One2many('fleet.line.checklist', 'filtre_template_id', 'Autre entretien',
 	                                 domain=[('name.code', '=', 'autres')])
-	designation_id = fields.Many2one("product.template.type", "Type de machine", required=True,
-	                                 ondelete='restrict')
+	designation_id = fields.Many2one("fleet.vehicle.type", "Type de machine", required=True, ondelete='restrict')
 	
 	type_id = fields.Many2one("fleet.filtre.template.type", "Type")
 

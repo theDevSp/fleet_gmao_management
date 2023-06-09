@@ -6,3 +6,4 @@ from . import entretien_verification_model
 from . import configuration_model
 from . import checklist
 from . import fleet_intervention_zone
+from . import filtre

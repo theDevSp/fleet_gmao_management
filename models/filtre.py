@@ -13,7 +13,7 @@ class fleet_line_reparation(models.Model):
 	notes = fields.Text('Observation')
 	price_unit = fields.Float('Prix unitaire')
 	qty = fields.Integer("Quantité")
-	uom_id = fields.Many2one('product.uom', 'Unité')
+	# uom_id = fields.Many2one('product.uom', 'Unité')
 	option = fields.Char("Option")
 	log_id = fields.Many2one("fleet.vehicle.log.services", "Service")
 	filtre_id = fields.Many2one('fleet.filtre', 'Filtre')

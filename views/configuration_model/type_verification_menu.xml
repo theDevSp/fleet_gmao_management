@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Type de vérification" id="type_verification_main_menu" parent="machine_configuration_base_menu" sequence="3" action="type_verification_action"/>
+</odoo>

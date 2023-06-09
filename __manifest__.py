@@ -13,12 +13,14 @@
 		'security/ir.model.access.csv',
         'views/sequences/pm_sequence.xml',
 
-		# 'views/vehicle_views.xml',
-		'views/checklist_view.xml',
-        'views/fleet_vehicle_pm_view.xml',
-        
         # configuration views
+        'views/configuration_model/accrochage_view.xml',
+        'views/configuration_model/categorie_engin_view.xml',
+        'views/configuration_model/type_verification_view.xml',
+        'views/configuration_model/type_machine_view.xml',
+        'views/configuration_model/marque_view.xml',
         'views/configuration_model/classe_machine_view.xml',
+        'views/configuration_model/type_moteur_view.xml',
         
         # document views
         'views/document_model/document_view.xml',
@@ -30,6 +32,7 @@
         'views/entretien_verification_model/modele_revision_view.xml',
         'views/entretien_verification_model/verification_view.xml',
         'views/entretien_verification_model/maintenance_programmee_view.xml',
+        'views/entretien_verification_model/etat_panne_view.xml',
         
         # machine views
         'views/machine_model/machines_view.xml',
@@ -37,7 +40,13 @@
 
         # configuration menu
         'views/configuration_model/configuration_menu.xml',
+        'views/configuration_model/accrochage_menu.xml',
+        'views/configuration_model/categorie_engin_menu.xml',
+        'views/configuration_model/type_verification_menu.xml',
+        'views/configuration_model/type_machine_menu.xml',
+        'views/configuration_model/marque_menu.xml',
         'views/configuration_model/classe_machine_menu.xml',
+        'views/configuration_model/type_moteur_menu.xml',
         
         # document menu
         'views/document_model/document_menu.xml',
@@ -50,6 +59,7 @@
         'views/entretien_verification_model/modele_revision_menu.xml',
         'views/entretien_verification_model/verification_menu.xml',
         'views/entretien_verification_model/maintenance_programmee_menu.xml',
+        'views/entretien_verification_model/etat_panne_menu.xml',
         
         # machine menu
         'views/machine_model/machines_menu_principal.xml',

@@ -33,8 +33,8 @@
                         <page string="Remplacement">
                             <field name="reparation_ids">
                                 <tree string="Remplacement" editable="bottom">
-                                    <!-- <field name="nomenclature_id" required="1"/> -->
-                                    <field name="qty" invisible="1"/>
+                                    <field name="name" required="1"/>
+                                    <field name="qty"/>
                                 </tree>
                             </field>
                         </page>
@@ -44,7 +44,7 @@
                                     <field name="checklist_ids1">
                                         <tree string="Niveau" editable="bottom">
                                             <field name="name" domain="[('code','=','niveau')]"
-                                                    context="{'default_code': 'niveau'}"/>
+                                                    context="{'default_code': 'niveau'}" options="{'no_create': True, 'no_open': True}"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -52,7 +52,7 @@
                                     <field name="checklist_ids2">
                                         <tree string="Graissage" editable="bottom">
                                             <field name="name" domain="[('code','=','graissage')]"
-                                                    context="{'default_code': 'graissage'}"/>
+                                                    context="{'default_code': 'graissage'}" options="{'no_create': True, 'no_open': True}"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -60,7 +60,7 @@
                                     <field name="checklist_ids3">
                                         <tree string="Pression" editable="bottom">
                                             <field name="name" domain="[('code','=','pression')]"
-                                                    context="{'default_code': 'pression'}"/>
+                                                    context="{'default_code': 'pression'}" options="{'no_create': True, 'no_open': True}"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -68,7 +68,7 @@
                                     <field name="checklist_ids4">
                                         <tree string="Remplacement huile" editable="bottom">
                                             <field name="name" domain="[('code','=','huile')]"
-                                                    context="{'default_code': 'huile'}"/>
+                                                    context="{'default_code': 'huile'}" options="{'no_create': True, 'no_open': True}"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -76,7 +76,7 @@
                                     <field name="checklist_ids5">
                                         <tree string="Autres entretiens" editable="bottom">
                                             <field name="name" domain="[('code','=','autres')]"
-                                                    context="{'default_code': 'autres'}"/>
+                                                    context="{'default_code': 'autres'}" options="{'no_create': True, 'no_open': True}"/>
                                         </tree>
                                     </field>
                                 </group>

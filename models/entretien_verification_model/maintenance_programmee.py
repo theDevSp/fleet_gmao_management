@@ -33,7 +33,7 @@ class fleet_vehicle_pm(models.Model):
                 raise ValidationError("Erreur, Vous ne pouvez pas supprimer une maintenance programmée, songez à l\'annuler.")
         return super(fleet_vehicle_pm, self).unlink()
       
-    name = fields.Char(string='Réf MP')
+    name = fields.Char(string='Réf MP',default="New")
     state = fields.Selection(STATE_SELECTION,string='Etat',default='draft',tracking=True)
     state_two = fields.Selection(STATE2_SELECTION, string='Statut', compute='_compute_state_two',store=True)
 
@@ -55,10 +55,10 @@ class fleet_vehicle_pm(models.Model):
     maintenance_type = fields.Selection([('pm','Mainteance programmée')],string='Type')
     employee_id = fields.Many2one("hr.employee",string="Employé")
 
-    # @api.model
-    # def create(self, vals):
-    #     vals['name'] = self.env['ir.sequence'].get('fleet.vehicle.pm')
-    #     return 
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('fleet.vehicle.pm.sequence')
+        return super(fleet_vehicle_pm, self).create(vals)
 
     def action_confirm(self):
         self.state = 'confirm'

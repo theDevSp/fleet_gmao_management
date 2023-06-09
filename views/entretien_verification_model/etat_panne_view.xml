@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='etat_panne_action' model='ir.actions.act_window'>
+        <field name="name">État de panne</field>
+        <field name="res_model">mro.order</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+    <record id="etat_panne_tree" model="ir.ui.view">
+        <field name="name">Les états de panne</field>
+        <field name="model">mro.order</field>
+        <field name="arch" type="xml">
+            <tree string="Les états de panne">
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="employee_id"/>
+                <field name="chantier_id"/>
+                <field name="maintenance_type"/>
+                <field name="service_type_id"/>
+                <field name="type_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="duree_saisie"/>
+                <field name="odometer"/>
+                <field name="vehicle_state"/>
+            </tree>
+        </field>
+    </record>
+   
+    <record id="etat_panne_view_form" model="ir.ui.view">
+        <field name="name">État de panne - Form</field>
+        <field name="model">mro.order</field>
+        <field name="arch" type="xml">
+            <form string="État de panne">
+                <header>
+                    <button name="to_draft" type="object" string="Brouillon" attrs="{'invisible': [('state', 'in', ('draft'))]}" class="oe_highlight"/>
+                    <button name="to_ready"  type="object" string="Prêt" attrs="{'invisible': [('state', 'in', ('ready'))]}" class="oe_highlight"/>
+                    <button name="to_annulee" type="object" string="Annuler" attrs="{'invisible': [('state', 'in', ('cancel'))]}" class="oe_highlight"/>
+                    <button name="to_terminee" type="object" string="Terminer" attrs="{'invisible': [('state', 'in', ('draft','done'))]}" class="oe_highlight"/>
+                    <field name="vehicle_state" widget="statusbar" nolabel="1"/>
+                    <field name="state" widget="statusbar" nolabel="1"/>
+                </header>
+                <sheet>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card border-dark mb-3 bg-info">
+                                <div class="card-header text-center">
+                                    <h5>Référence MP</h5>
+                                </div>
+                                <div class="card-body text-dark text-center">
+                                    <h2>
+                                        <field name="name" readonly="1"/>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card border-dark mb-3 bg-light">
+                                <div class="card-body text-dark">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="chantier_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-city form-control-icon"></span>
+                                                    <field name="chantier_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="vehicle_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-car form-control-icon"></span>
+                                                    <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="employee_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-user form-control-icon"></span>
+                                                    <field name="employee_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="maintenance_type" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-calendar form-control-icon"></span>
+                                                    <field name="maintenance_type" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="service_type_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-user form-control-icon"></span>
+                                                    <field name="service_type_id" options="{'no_create': False, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="type_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-calendar form-control-icon"></span>
+                                                    <field name="type_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="date_start" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-user form-control-icon"></span>
+                                                    <field name="date_start" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="date_end" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-calendar form-control-icon"></span>
+                                                    <field name="date_end" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="duree_saisie" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-user form-control-icon"></span>
+                                                    <field name="duree_saisie" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="odometer" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-calendar form-control-icon"></span>
+                                                    <field name="odometer" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="description" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-align-justify form-control-icon"></span>
+                                                    <field name="description" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="etat_panne_search" model="ir.ui.view">
+        <field name="name">Recherche - État de panne</field>
+        <field name="model">mro.order</field>
+        <field name="arch" type="xml">
+            <search string="Les états de panne">
+                <field name="name" />
+                <field name="vehicle_id" />
+                <field name="chantier_id" />
+                <field name="employee_id" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <group expand="0" string="Group By">
+                    <filter name="groupby_vehicle" context="{'group_by' : 'vehicle_id'}" string="Engin"/>
+                    <filter name="groupby_chantier_id" context="{'group_by' : 'chantier_id'}" string="Chantier"/>
+                    <filter name="groupby_employee_id" context="{'group_by' : 'employee_id'}" string="Chef de matériel"/>
+                    <filter name="groupby_date_start" context="{'group_by' : 'date_start'}" string="Date début"/>
+                    <filter name="groupby_date_end" context="{'group_by' : 'date_end'}" string="Date fin"/>
+                </group>
+                <searchpanel>
+                    <field name="chantier_id" icon="fa-city" enable_counters="1" select="multi"/>
+                    <field name="employee_id" icon="fa-user" enable_counters="1" select="multi"/>
+                    <field name="vehicle_id" icon="fa-car" enable_counters="1" select="multi"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+</odoo>

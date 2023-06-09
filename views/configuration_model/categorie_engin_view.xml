@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id='class_machine_action' model='ir.actions.act_window'>
-        <field name="name">Classe Machine</field>
-        <field name="res_model">fleet.vehicle.class</field>
+    <record id='categorie_engin_action' model='ir.actions.act_window'>
+        <field name="name">Catégorie Engin</field>
+        <field name="res_model">fleet.vehicle.category</field>
         <field name="view_mode">tree,form,search</field>
     </record>
 
-    <record id="class_machine_tree" model="ir.ui.view">
-        <field name="name">Liste des classes machines</field>
-        <field name="model">fleet.vehicle.class</field>
+    <record id="categorie_engin_tree" model="ir.ui.view">
+        <field name="name">Liste des catégories Engin</field>
+        <field name="model">fleet.vehicle.category</field>
         <field name="arch" type="xml">
-            <tree string="Liste des classes machines" multi_edit="1" sample="1" class="table">
+            <tree string="Catégorie Engin" multi_edit="1" sample="1" class="table">
                 <field name="name"/>
-                <field name="description"/>
+                <field name="note"/>
             </tree>
         </field>
     </record>
    
-    <record id="class_machine_view_form" model="ir.ui.view">
-        <field name="name">Classe machine - Form</field>
-        <field name="model">fleet.vehicle.class</field>
+    <record id="categorie_engin_view_form" model="ir.ui.view">
+        <field name="name">Catégorie Engin - Form</field>
+        <field name="model">fleet.vehicle.category</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -31,7 +31,7 @@
                                         <label for="name" class=""/>
                                         <div class="main">
                                             <div class="form-group">
-                                                <span class="fas fa-align-justify form-control-icon"></span>
+                                                <span class="fas fa-align-center form-control-icon"></span>
                                                 <field name="name" class="form-control"/>
                                             </div>  
                                         </div>
@@ -39,11 +39,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="description" class=""/>
+                                        <label for="note" class=""/>
                                         <div class="main">
                                             <div class="form-group">
-                                                <span class="fa fa-comment form-control-icon"></span>
-                                                <field name="description" class="form-control" options="{'no_create': True, 'no_open': True}"/>
+                                                <span class="fas fa-comment form-control-icon"></span>
+                                                <field name="note" class="form-control"/>
                                             </div>  
                                         </div>      
                                     </div>
@@ -61,13 +61,16 @@
         </field>
     </record>
 
-    <record id="class_machine_search" model="ir.ui.view">
-        <field name="name">Recherche - Classe Machine</field>
-        <field name="model">fleet.vehicle.class</field>
+    <record id="categorie_engin_search" model="ir.ui.view">
+        <field name="name">Recherche - Catégorie Engin</field>
+        <field name="model">fleet.vehicle.category</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
-                <field name="description"/>
+                <field name="note"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_vehicle_id" string="Catégories" context="{'group_by':'name'}"/>
+                </group>
             </search>
         </field>
     </record>

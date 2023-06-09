@@ -24,66 +24,104 @@
         <field name="arch" type="xml">
             <form string="Tableaux d'entretien">
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="vehicle_id" string="Machine" options="{'no_create': True, 'no_open': True}"/>
-                        <field name="type_id" required="1"/>
-                    </group>
-                    <notebook>
-                        <page string="Remplacement">
-                            <field name="reparation_ids">
-                                <tree string="Remplacement" editable="bottom">
-                                    <field name="product_id" required="1"/>
-                                    <field name="qty" required="1"/>
-                                    <field name="option" invisible="1"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Vérifications">
-                            <group col="2">
-                                <group string="Niveau">
-                                    <field name="checklist_ids1" nolabel="1">
-                                        <tree editable="bottom">
-                                            <field name="name" domain="[('code','=','niveau')]"
-                                                    context="{'default_code': 'niveau'}"/>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card border-dark mb-3 bg-light" style="max-width: 30em;text-align:left;">
+                                <div class="card-body text-dark">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="name" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-comment form-control-icon"></span>
+                                                    <field name="name" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="vehicle_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-car form-control-icon"></span>
+                                                    <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="type_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-align-justify form-control-icon"></span>
+                                                    <field name="type_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <notebook>
+                                <page string="Remplacement">
+                                    <field name="reparation_ids">
+                                        <tree string="Remplacement" editable="bottom">
+                                            <field name="product_id" required="1" options="{'no_create': True, 'no_open': True}" />
+                                            <field name="qty" required="1"/>
+                                            <field name="option" invisible="1"/>
                                         </tree>
                                     </field>
-                                </group>
-                                <group string="Graissage">
-                                    <field name="checklist_ids2" nolabel="1">
-                                        <tree editable="bottom">
-                                            <field name="name" domain="[('code','=','graissage')]"
-                                                    context="{'default_code': 'graissage'}"/>
-                                        </tree>
-                                    </field>
-                                </group>
-                                <group string="Pression">
-                                    <field name="checklist_ids3" nolabel="1">
-                                        <tree editable="bottom">
-                                            <field name="name" domain="[('code','=','pression')]"
-                                                    context="{'default_code': 'pression'}"/>
-                                        </tree>
-                                    </field>
-                                </group>
-                                <group string="Remplacement huile">
-                                    <field name="checklist_ids4" nolabel="1">
-                                        <tree editable="bottom">
-                                            <field name="name" domain="[('code','=','huile')]"
-                                                    context="{'default_code': 'huile'}"/>
-                                        </tree>
-                                    </field>
-                                </group>
-                                <group string="Autres entretiens">
-                                    <field name="checklist_ids5" nolabel="1">
-                                        <tree editable="bottom">
-                                            <field name="name" domain="[('code','=','autres')]"
-                                                    context="{'default_code': 'autres'}"/>
-                                        </tree>
-                                    </field>
-                                </group>
-                            </group>
-                        </page>
-                    </notebook>
+                                </page>
+                                <page string="Vérifications">
+                                    <group col="2">
+                                        <group string="Niveau">
+                                            <field name="checklist_ids1" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="name" domain="[('code','=','niveau')]"
+                                                            context="{'default_code': 'niveau'}" options="{'no_create': True, 'no_open': True}" />
+                                                </tree>
+                                            </field>
+                                        </group>
+                                        <group string="Graissage">
+                                            <field name="checklist_ids2" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="name" domain="[('code','=','graissage')]"
+                                                            context="{'default_code': 'graissage'}" options="{'no_create': True, 'no_open': True}" />
+                                                </tree>
+                                            </field>
+                                        </group>
+                                        <group string="Pression">
+                                            <field name="checklist_ids3" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="name" domain="[('code','=','pression')]"
+                                                            context="{'default_code': 'pression'}" options="{'no_create': True, 'no_open': True}" />
+                                                </tree>
+                                            </field>
+                                        </group>
+                                        <group string="Remplacement huile">
+                                            <field name="checklist_ids4" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="name" domain="[('code','=','huile')]"
+                                                            context="{'default_code': 'huile'}" options="{'no_create': True, 'no_open': True}" />
+                                                </tree>
+                                            </field>
+                                        </group>
+                                        <group string="Autres entretiens">
+                                            <field name="checklist_ids5" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="name" domain="[('code','=','autres')]"
+                                                            context="{'default_code': 'autres'}" options="{'no_create': True, 'no_open': True}" />
+                                                </tree>
+                                            </field>
+                                        </group>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </div>
+                    </div>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -99,7 +137,7 @@
         <field name="model">fleet.filtre</field>
         <field name="arch" type="xml">
             <search string="Tableau d'entretien">
-               <field name="vehicle_id" string="Machine"/>
+                <field name="vehicle_id" string="Machine"/>
                 <group expand="0" string="Group By">
                     <filter name="group_by_vehicle_id" string="Machines" context="{'group_by':'vehicle_id'}"/>
                     <filter string="Revision" name="group_by_name" context="{'group_by':'name'}"/>
