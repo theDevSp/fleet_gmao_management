@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem name="Modèle Révision" id="modele_revision_main_menu" parent="entretien_verification_base_menu" sequence="3" action="modele_revision_action"/>
+
+    <record id='modele_revision_action' model='ir.actions.act_window'>
+        <field name="name">Modèle Révision</field>
+        <field name="res_model">fleet.filtre.template.type</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
 </odoo>

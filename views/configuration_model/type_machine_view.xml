@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id='type_machine_action' model='ir.actions.act_window'>
-        <field name="name">Type machines</field>
-        <field name="res_model">fleet.vehicle.type</field>
-        <field name="view_mode">tree,form,search</field>
-    </record>
-
     <record id="type_machine_tree" model="ir.ui.view">
         <field name="name">Les types machines</field>
         <field name="model">fleet.vehicle.type</field>

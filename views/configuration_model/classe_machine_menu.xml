@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem name="Classe Machine" id="classe_machine_main_menu" parent="machine_configuration_base_menu" sequence="6" action="class_machine_action"/>
+
+    <record id='class_machine_action' model='ir.actions.act_window'>
+        <field name="name">Classe Machine</field>
+        <field name="res_model">fleet.vehicle.class</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
 </odoo>
