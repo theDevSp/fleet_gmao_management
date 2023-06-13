@@ -37,6 +37,11 @@
         # machine views
         'views/machine_model/machines_view.xml',
         'views/machine_model/affectation_view.xml',
+        
+        # machine menu
+        'views/machine_model/machines_menu_principal.xml',
+        'views/machine_model/machines_menu.xml',
+        'views/machine_model/affectation_menu.xml',
 
         # configuration menu
         'views/configuration_model/configuration_menu.xml',
@@ -60,11 +65,6 @@
         'views/entretien_verification_model/verification_menu.xml',
         'views/entretien_verification_model/maintenance_programmee_menu.xml',
         'views/entretien_verification_model/etat_panne_menu.xml',
-        
-        # machine menu
-        'views/machine_model/machines_menu_principal.xml',
-        'views/machine_model/machines_menu.xml',
-        'views/machine_model/affectation_menu.xml',
 	],
     'installable': True,
 	'application': True,

@@ -10,7 +10,7 @@
         <field name="name">Liste des affectations</field>
         <field name="model">fleet.vehicle.chantier.affectation</field>
         <field name="arch" type="xml">
-            <tree string="Liste des affectations" multi_edit="1" sample="1" class="table">
+            <tree string="Liste des affectations">
                 <!-- <field name="product_id"/> -->
                 <field name="name"/>
                 <field name="vehicle_id"/>
