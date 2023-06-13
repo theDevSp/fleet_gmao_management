@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Affectations" id="affectations_main_menu" parent="les_machines_main_menu" sequence="2" action="affectations_action"/>
+
+    <record id='affectations_action' model='ir.actions.act_window'>
+        <field name="name">Affectations</field>
+        <field name="res_model">fleet.vehicle.chantier.affectation</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+</odoo>

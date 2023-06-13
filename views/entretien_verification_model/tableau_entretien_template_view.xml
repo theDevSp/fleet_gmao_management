@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tableau_entretien_template_tree" model="ir.ui.view">
+        <field name="name">Tableau d'entretien template</field>
+        <field name="model">fleet.filtre.template</field>
+        <field name="arch" type="xml">
+            <tree string="Les tableaux d'entretien template" multi_edit="1" sample="1" class="table">
+                <field name="name"/>
+                <field name="designation_id"/>
+                <field name="type_id"/>
+            </tree>
+        </field>
+    </record>
+   
+    <record id="tableau_entretien_template_view_form" model="ir.ui.view">
+        <field name="name">Tableau d'entretien template - Form</field>
+        <field name="model">fleet.filtre.template</field>
+        <field name="arch" type="xml">
+            <form string="Tableaux d'entretien template">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="designation_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="type_id" required="1" options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                    <notebook>
+                        <page string="Remplacement">
+                            <field name="reparation_ids">
+                                <tree string="Remplacement" editable="bottom">
+                                    <field name="name" required="1"/>
+                                    <field name="qty"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Vérifications">
+                            <group col="2">
+                                <group>
+                                    <field name="checklist_ids1">
+                                        <tree string="Niveau" editable="bottom">
+                                            <field name="name" domain="[('code','=','niveau')]"
+                                                    context="{'default_code': 'niveau'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids2">
+                                        <tree string="Graissage" editable="bottom">
+                                            <field name="name" domain="[('code','=','graissage')]"
+                                                    context="{'default_code': 'graissage'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids3">
+                                        <tree string="Pression" editable="bottom">
+                                            <field name="name" domain="[('code','=','pression')]"
+                                                    context="{'default_code': 'pression'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids4">
+                                        <tree string="Remplacement huile" editable="bottom">
+                                            <field name="name" domain="[('code','=','huile')]"
+                                                    context="{'default_code': 'huile'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids5">
+                                        <tree string="Autres entretiens" editable="bottom">
+                                            <field name="name" domain="[('code','=','autres')]"
+                                                    context="{'default_code': 'autres'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="tableau_entretien_template_search" model="ir.ui.view">
+        <field name="name">Recherche - Tableau d'entretien template</field>
+        <field name="model">fleet.filtre.template</field>
+        <field name="arch" type="xml">
+            <search string="Tableau d'entretien template">
+                <field name="designation_id" string="Type de machine"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_designation_id" string="Type de machine"
+                            context="{'group_by':'designation_id'}"/>
+                    <filter string="Révision" name="group_by_name" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

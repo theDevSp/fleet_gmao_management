@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Documents" id="documents_base_menu" parent="les_machines_base_menu" sequence="2"/>
+    <menuitem name="Documents" id="documents_main_menu" parent="documents_base_menu" sequence="1" action="documents_action"/>
+
+    <record id='documents_action' model='ir.actions.act_window'>
+        <field name="name">Documents</field>
+        <field name="res_model">fleet.vehicle.administratif.documents</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+</odoo>

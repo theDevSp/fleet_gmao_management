@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Tableau d'entretien template" id="tableau_entretien_template_main_menu" parent="entretien_verification_base_menu" sequence="2" action="tableau_entretien_template_action"/>
+
+    <record id='tableau_entretien_template_action' model='ir.actions.act_window'>
+        <field name="name">Tableau d'entretien template</field>
+        <field name="res_model">fleet.filtre.template</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+</odoo>

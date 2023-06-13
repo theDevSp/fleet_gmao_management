@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="affectations_tree" model="ir.ui.view">
+        <field name="name">Liste des affectations</field>
+        <field name="model">fleet.vehicle.chantier.affectation</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des affectations">
+                <!-- <field name="product_id"/> -->
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="brand_id"/>
+                <field name="type"/>
+                <field name="vehicle_chantier_id"/>
+                <field name="emplacement_source_id"/>
+                <field name="chantier_id"/>
+                <field name="emplacement_chantier_id"/>
+                <field name="date_start" string="Date de transfert"/>
+                <field name="date_end"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+   
+    <record id="affectations_view_form" model="ir.ui.view">
+        <field name="name">Affectation - Form</field>
+        <field name="model">fleet.vehicle.chantier.affectation</field>
+        <field name="arch" type="xml">
+            <form string="Affectation">
+                <header>
+                    <button name="action_done" states="draft" string="Valider" type='object' class="oe_highlight"/>
+                    <button name="action_draft" states="done" string="Corriger" type='object'/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card border-dark mb-3 bg-info">
+                                <div class="card-header text-center">
+                                    <h5>Référence</h5>
+                                </div>
+                                <div class="card-body text-dark text-center">
+                                    <h3>
+                                        <field name="name"/>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card border-dark mb-3 bg-light">
+                                <div class="card-body text-dark">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="vehicle_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-car form-control-icon"></span>
+                                                    <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="brand_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-barcode form-control-icon"></span>
+                                                    <field name="brand_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="vehicle_chantier_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-city form-control-icon"></span>
+                                                    <field name="vehicle_chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="emplacement_source_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-users form-control-icon"></span>
+                                                    <field name="emplacement_source_id" domain="[('chantier_ids','=',vehicle_chantier_id)]" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="chantier_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-city form-control-icon"></span>
+                                                    <field name="chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="emplacement_chantier_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fa fa-users form-control-icon"></span>
+                                                    <field name="emplacement_chantier_id" domain="[('chantier_ids','=',chantier_id)]" options="{'no_create': True, 'no_open': True}" class="form-control" />
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="date_start" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fa fa-calendar form-control-icon"></span>
+                                                    <field name="date_start" string="Date de transfert" class="form-control" />
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="date_end" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fa fa-calendar form-control-icon"></span>
+                                                    <field name="date_end" class="form-control" />
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="type" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fa fa-align-center form-control-icon"></span>
+                                                    <field name="type" options="{'no_create': True, 'no_open': True}" class="form-control" />
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="notes" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-comment form-control-icon"></span>
+                                                    <field name="notes" placeholder='Informations supplémentaires...' nolabel="1" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="affectations_search" model="ir.ui.view">
+        <field name="name">Recherche - Affectations</field>
+        <field name="model">fleet.vehicle.chantier.affectation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="chantier_id"/>
+                <field name="vehicle_chantier_id" />
+                <!-- <field name="product_id" /> -->
+                <field name="brand_id" />
+                <field name="type" />
+                <group expand="0" string="Group By">
+                    <filter name="group_by_vehicle_id" string="Engins" context="{'group_by':'vehicle_id'}"/>
+                    <filter name="group_by_chantier_id" string="Chantiers" context="{'group_by':'chantier_id'}"/>
+                    <!-- <filter name="group_by_product_id" string="Désignation" context="{'group_by':'product_id'}"/> -->
+                    <filter name="group_by_brand_id" string="Marque" context="{'group_by':'brand_id'}"/>
+                    <filter name="group_by_type" string="Type" context="{'group_by':'type'}"/>
+                    <filter name="group_by_date_start" string="Date de transfert" context="{'group_by':'date_start'}"/>
+                </group>
+                <searchpanel>
+                    <field name="chantier_id" icon="fa-city" enable_counters="1" select="multi"/>
+                    <field name="vehicle_chantier_id" icon="fa-city" enable_counters="1" select="multi"/>
+                    <field name="brand_id" icon="fa-barcode" enable_counters="1" select="multi"/>
+                    <field name="brand_id" icon="fa-align-center" enable_counters="1" select="multi"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+</odoo>

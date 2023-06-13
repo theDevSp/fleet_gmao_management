@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="class_machine_tree" model="ir.ui.view">
+        <field name="name">Liste des classes machines</field>
+        <field name="model">fleet.vehicle.class</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des classes machines" multi_edit="1" sample="1" class="table">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+   
+    <record id="class_machine_view_form" model="ir.ui.view">
+        <field name="name">Classe machine - Form</field>
+        <field name="model">fleet.vehicle.class</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <center>
+                        <div class="card border-dark mt-3 bg-light" style="max-width: 30em;text-align:left;">
+                            <div class="card-body text-dark">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="name" class=""/>
+                                        <div class="main">
+                                            <div class="form-group">
+                                                <span class="fas fa-align-justify form-control-icon"></span>
+                                                <field name="name" class="form-control"/>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="description" class=""/>
+                                        <div class="main">
+                                            <div class="form-group">
+                                                <span class="fa fa-comment form-control-icon"></span>
+                                                <field name="description" class="form-control" options="{'no_create': True, 'no_open': True}"/>
+                                            </div>  
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="class_machine_search" model="ir.ui.view">
+        <field name="name">Recherche - Classe Machine</field>
+        <field name="model">fleet.vehicle.class</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+            </search>
+        </field>
+    </record>
+</odoo>

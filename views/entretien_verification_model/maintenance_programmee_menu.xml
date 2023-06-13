@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Maintenance programmée" id="maintenance_programmee_main_menu" parent="entretien_verification_base_menu" sequence="5" action="maintenance_programmee_action"/>
+
+    <record id='maintenance_programmee_action' model='ir.actions.act_window'>
+        <field name="name">Maintenance programmée</field>
+        <field name="res_model">fleet.vehicle.pm</field>
+        <field name="view_mode">tree,form,calendar,search</field>
+        <field name="domain">[('maintenance_type','=','pm')]</field>
+        <field name="context">{'default_maintenance_type':'pm'}</field>
+    </record>
+</odoo>

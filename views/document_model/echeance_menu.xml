@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Échéances" id="echeances_main_menu" parent="documents_base_menu" sequence="2" action="echeances_action"/>
+
+    <record id='echeances_action' model='ir.actions.act_window'>
+        <field name="name">Échéances</field>
+        <field name="res_model">fleet.vehicle.echeance</field>
+        <field name="view_mode">calendar,tree,form,search</field>
+    </record>
+</odoo>

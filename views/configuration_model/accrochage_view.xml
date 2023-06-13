@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="accrochage_tree" model="ir.ui.view">
+        <field name="name">Liste des accrochages</field>
+        <field name="model">fleet.vehicle.modification</field>
+        <field name="arch" type="xml">
+            <tree string="Liste des accrochages" multi_edit="1" sample="1" class="table">
+                <field name="vehicle_id"/>
+                <field name="related_vehicle_id" domain="[('id','!=',vehicle_id)]" options="{'no_create': True, 'no_open': True}"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+   
+    <record id="accrochage_view_form" model="ir.ui.view">
+        <field name="name">Accrochage - Form</field>
+        <field name="model">fleet.vehicle.modification</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <center>
+                        <div class="card border-dark mt-3 bg-light" style="max-width: 30em;text-align:left;">
+                            <div class="card-body text-dark">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="vehicle_id" class=""/>
+                                        <div class="main">
+                                            <div class="form-group">
+                                                <span class="fas fa-car form-control-icon"></span>
+                                                <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="related_vehicle_id" class=""/>
+                                        <div class="main">
+                                            <div class="form-group">
+                                                <span class="fas fa-car form-control-icon"></span>
+                                                <field name="related_vehicle_id" class="form-control" options="{'no_create': True, 'no_open': True}"/>
+                                            </div>  
+                                        </div>      
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="date" class=""/>
+                                        <div class="main">
+                                            <div class="form-group">
+                                                <span class="fas fa-calendar form-control-icon"></span>
+                                                <field name="date" class="form-control"/>
+                                            </div>  
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="accrochage_search" model="ir.ui.view">
+        <field name="name">Recherche - Accrochage</field>
+        <field name="model">fleet.vehicle.modification</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="vehicle_id"/>
+                <field name="related_vehicle_id"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_vehicle_id" string="Engins" context="{'group_by':'vehicle_id'}"/>
+                    <filter name="group_by_related_vehicle_id" string="Engins reliés"
+                            context="{'group_by':'related_vehicle_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

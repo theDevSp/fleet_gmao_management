@@ -1,32 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.module.category" id="module_category_manage_product">
-        <field name="name">Gestion Engin</field>
+    <record model="ir.module.category" id="module_machine_engin">
+        <field name="name">Groupe privilège Gestion Engin</field>
         <field name="description">Gestion droit d'accés pour Engin</field>
         <field name="sequence">21</field>
     </record>
-    <record id="group_product_admin" model="res.groups">
-        <field name="name">Gestion Engin</field>
-        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
-        <field name="category_id" ref="fleet_gmao_management.module_category_manage_product"/>
+
+     <record id="group_admin_parc_engin" model="res.groups">                                
+        <field name="name">Administrateur Parc Engin</field>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"></field>                                
+        <field name="category_id" ref="module_machine_engin"></field>                            
     </record>
-    <record id="group_product_manager" model="res.groups">
-        <field name="name">Création Engin</field>
-        <field name="category_id" ref="fleet_gmao_management.module_category_manage_product"/>
-    </record>
-    <record id="group_product_consultation" model="res.groups">
-        <field name="name">Consultation Engin</field>
-        <field name="category_id" ref="fleet_gmao_management.module_category_manage_product"/>
-    </record>
-    <record id="group_documents_manager" model="res.groups">
-        <field name="name">Gestion Documents Engin</field>
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
-        <field name="category_id" ref="fleet_gmao_management.module_category_manage_product"/>
-    </record>
-    <record id="group_documents_consultation" model="res.groups">
-        <field name="name">Consultation Documents Engin</field>
-        <field name="category_id" ref="fleet_gmao_management.module_category_manage_product"/>
+    
+    <record id="group_responsable_materiel" model="res.groups">                                
+        <field name="name">Responsable Materiel</field>
+        <field name="category_id" ref="module_machine_engin"></field>                            
+    </record>  
+
+    <record id="group_responsable_maintenance" model="res.groups">
+        <field name="name">Responsable Maintenance</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
     </record>
 
+    <record id="group_responsable_intervention_reparation" model="res.groups">
+        <field name="name">Responsable Intervention et Réparation</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
 
+    <record id="group_magasinier_piece" model="res.groups">
+        <field name="name">Magasinier pièce</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
+
+    <record id="group_magasinier_filtre" model="res.groups">
+        <field name="name">Magasinier filtre</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
+
+    <record id="group_responsable_document" model="res.groups">
+        <field name="name">Responsable Document</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
+
+    <record id="group_service_classification" model="res.groups">
+        <field name="name">Service Classification</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
+
+    <record id="group_simple_user" model="res.groups">
+        <field name="name">Simple User</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
+
+    <record id="group_global_user" model="res.groups">
+        <field name="name">Global User</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
+
+    <record id="group_responsable_achat" model="res.groups">
+        <field name="name">Responsable Achat</field>
+        <field name="category_id" ref="module_machine_engin"></field>  
+    </record>
 </odoo>

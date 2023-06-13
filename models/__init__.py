@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from . import fleet_vehicle
-from . import fleet_vehicle_activity_cost
-from . import fleet_vehicle_odometer
-from . import product_vehicle
+from . import machine_model
+from . import document_model
+from . import entretien_verification_model
+from . import configuration_model
 from . import checklist
+from . import fleet_intervention_zone
 from . import filtre
-
-

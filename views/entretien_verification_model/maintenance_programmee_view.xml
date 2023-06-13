@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="maintenance_programmee_tree" model="ir.ui.view">
+        <field name="name">Les maintenances programmées</field>
+        <field name="model">fleet.vehicle.pm</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state_two == 'in_progress'" decoration-warning="state_two == 'warning'" decoration-danger="state_two == 'error'">
+                <field name="name" />
+                <field name="vehicle_id" />
+                <field name="chantier_id" />
+                <field name="state_two" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+   
+    <record id="maintenance_programmee_view_form" model="ir.ui.view">
+        <field name="name">Maintenance programmée - Form</field>
+        <field name="model">fleet.vehicle.pm</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance programmée">
+                <header>
+                    <button name="action_confirm" type="object" states="draft" string="Confirmer" class="oe_highlight"/>
+                    <button name="action_done"  type="object" states="confirm" string="Effectuer" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" states="draft,confirm" string="Annuler"/>
+                    <button name="action_draft" type="object" states="cancel" string="Brouillon" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
+                <sheet>
+                    <field name="state_two" invisible="1"/>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card border-dark mb-3 bg-info">
+                                <div class="card-header text-center">
+                                    <h5>Référence MP</h5>
+                                </div>
+                                <div class="card-body text-dark text-center">
+                                    <h2>
+                                        <field name="name" readonly="1"/>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card border-dark mb-3 bg-light">
+                                <div class="card-body text-dark">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="vidange" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <field name="vidange" attrs="{'readonly':[('state','=','done')]}" widget="boolean_toggle"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="chantier_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-city form-control-icon"></span>
+                                                    <field name="chantier_id"  attrs="{'readonly':[('state','=','done')]}" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="vehicle_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-car form-control-icon"></span>
+                                                    <field name="vehicle_id" attrs="{'readonly':[('state','=','done')]}" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="employee_id" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-user form-control-icon"></span>
+                                                    <field name="employee_id" domain="['|',('job_id.name','ilike','materiel'),('job_id.name','ilike','matériel')]" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':[('state','=','done')]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="date" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-calendar form-control-icon"></span>
+                                                    <field name="date" attrs="{'readonly':[('state','=','done')]}" required="1" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="date_start" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-calendar form-control-icon"></span>
+                                                    <field name="date_start" attrs="{'readonly':[('state','=','done')]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="date_end" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-calendar form-control-icon"></span>
+                                                    <field name="date_end" attrs="{'readonly':[('state','=','done')]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="description" class=""/>
+                                            <div class="main">
+                                                <div class="form-group">
+                                                    <span class="fas fa-align-justify form-control-icon"></span>
+                                                    <field name="description" attrs="{'readonly':[('state','=','done')]}" class="form-control"/>
+                                                </div>  
+                                            </div>      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <notebook>
+                        <page string="Remplacement">
+                            <field name="line_ids"  >
+                                <tree string="Remplacement" editable="bottom">
+                                    <field name="product_id" required="1" options="{'no_create': True, 'no_open': True}"/> 
+                                    <field name="qty" required="1"/>
+                                    <!-- <field name="uom_id" required="1"/> -->
+                                    <field name="price_unit" />
+                                    <field name="name" string='Description' required="1"/>
+                                    <field name="notes"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Vérifications">
+                            <group col="2">
+                                <group>
+                                    <field name="checklist_ids1">
+                                        <tree string="Niveau" editable="bottom">
+                                            <field name="name" domain="[('code','=','niveau')]" context="{'default_code': 'niveau'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids2">
+                                        <tree string="Graissage" editable="bottom">
+                                            <field name="name" domain="[('code','=','graissage')]" context="{'default_code': 'graissage'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids3">
+                                        <tree string="Pression" editable="bottom">
+                                            <field name="name" domain="[('code','=','pression')]"  context="{'default_code': 'pression'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids4">
+                                        <tree string="Remplacement huile" editable="bottom">
+                                            <field name="name" domain="[('code','=','huile')]" context="{'default_code': 'huile'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="checklist_ids5">
+                                        <tree string="Autres entretiens" editable="bottom">
+                                            <field name="name" domain="[('code','=','autres')]" context="{'default_code': 'autres'}" options="{'no_create': True, 'no_open': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="maintenance_programmee_search" model="ir.ui.view">
+        <field name="name">Recherche - Maintenance programmée</field>
+        <field name="model">fleet.vehicle.pm</field>
+        <field name="arch" type="xml">
+            <search string="Les maintenances programmées">
+                <field name="name" />
+                <field name="vehicle_id" />
+                <field name="chantier_id" />
+                <field name="employee_id" />
+                <!-- <field name="picking_id" /> -->
+                <field name="date_start" />
+                <field name="date_end" />
+                <group expand="0" string="Group By">
+                    <filter name="groupby_vehicle" context="{'group_by' : 'vehicle_id'}" string="Engin"/>
+                    <filter name="groupby_chantier_id" context="{'group_by' : 'chantier_id'}" string="Chantier"/>
+                    <filter name="groupby_employee_id" context="{'group_by' : 'employee_id'}" string="Chef de matériel"/>
+                    <filter name="groupby_date_start" context="{'group_by' : 'date_start'}" string="Date début"/>
+                    <filter name="groupby_date_end" context="{'group_by' : 'date_end'}" string="Date fin"/>
+                    <filter name="groupby_state_two" context="{'group_by' : 'state_two'}" string="Alert"/>
+                    <filter name="groupby_state" context="{'group_by' : 'state'}" string="Etat"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
