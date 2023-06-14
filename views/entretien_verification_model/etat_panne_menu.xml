@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem name="État de panne" id="etat_panne_main_menu" parent="entretien_verification_base_menu" sequence="6" action="etat_panne_action"/>
 
     <record id='etat_panne_action' model='ir.actions.act_window'>
         <field name="name">État de panne</field>
         <field name="res_model">mro.order</field>
         <field name="view_mode">tree,form,search</field>
     </record>
+
+    <menuitem name="État de panne" id="etat_panne_main_menu" parent="entretien_verification_base_menu" sequence="6" action="etat_panne_action"/>
+
 </odoo>

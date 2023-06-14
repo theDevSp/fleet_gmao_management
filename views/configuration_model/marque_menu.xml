@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem name="Marques (Fabricant)" id="marque_main_menu" parent="machine_configuration_base_menu" sequence="5" action="marque_action"/>
 
     <record id='marque_action' model='ir.actions.act_window'>
         <field name="name">Marque</field>
         <field name="res_model">fleet.vehicle.brand</field>
         <field name="view_mode">tree,form,search</field>
     </record>
+
+    <menuitem name="Marques (Fabricant)" id="marque_main_menu" parent="machine_configuration_base_menu" sequence="5" action="marque_action"/>
+
 </odoo>
