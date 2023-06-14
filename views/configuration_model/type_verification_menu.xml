@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem name="Type de vérification" id="type_verification_main_menu" parent="machine_configuration_base_menu" sequence="3" action="type_verification_action"/>
 
     <record id='type_verification_action' model='ir.actions.act_window'>
         <field name="name">Type de vérification</field>
         <field name="res_model">fleet.verification.type</field>
         <field name="view_mode">tree,form,search</field>
     </record>
+
+    <menuitem name="Type de vérification" id="type_verification_main_menu" parent="machine_configuration_base_menu" sequence="3" action="type_verification_action"/>
+
 </odoo>
