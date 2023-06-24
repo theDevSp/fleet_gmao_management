@@ -7,5 +7,5 @@ class FleetVehicleAdministratifDocuments(models.Model):
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 
 	name = fields.Char('Document', required=True)
-	period_count = fields.Integer("Durée de Période")
+	period_count = fields.Integer("Durée")
 	period_dmy = fields.Selection([('d', 'Jours'), ('m', 'Mois'), ('y', 'Années')], 'Période', default="y")

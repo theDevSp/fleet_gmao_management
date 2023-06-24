@@ -53,112 +53,101 @@
                                 <div class="card-body text-dark">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="chantier_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-city form-control-icon"></span>
-                                                    <field name="chantier_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="chantier_id" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                                </div>
+                                                <field name="chantier_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="vehicle_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-car form-control-icon"></span>
-                                                    <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="vehicle_id" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                                </div>
+                                                <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="employee_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-user form-control-icon"></span>
-                                                    <field name="employee_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="employee_id" class=""/></span>
+                                                </div>
+                                                <field name="employee_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><label for="maintenance_type" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                                </div>
+                                                <field name="maintenance_type" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="service_type_id" class=""/></span>
+                                                </div>
+                                                <field name="service_type_id" options="{'no_create': False, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                            </div>   
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="type_id" class=""/></span>
+                                                </div>
+                                                <field name="type_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                            </div>     
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="date_start" class=""/></span>
+                                                </div>
+                                                <field name="date_start" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                            </div> 
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="date_end" class=""/></span>
+                                                </div>
+                                                <field name="date_end" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                           <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="duree_saisie" class=""/></span>
+                                                </div>
+                                                <field name="duree_saisie" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
                                             </div>      
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="maintenance_type" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-calendar form-control-icon"></span>
-                                                    <field name="maintenance_type" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="odometer" class=""/></span>
+                                                </div>
+                                                <field name="odometer" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
                                             </div>      
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="service_type_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-user form-control-icon"></span>
-                                                    <field name="service_type_id" options="{'no_create': False, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
-                                            </div>      
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="type_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-calendar form-control-icon"></span>
-                                                    <field name="type_id" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
-                                            </div>      
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="date_start" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-user form-control-icon"></span>
-                                                    <field name="date_start" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
-                                            </div>      
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="date_end" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-calendar form-control-icon"></span>
-                                                    <field name="date_end" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
-                                            </div>      
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="duree_saisie" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-user form-control-icon"></span>
-                                                    <field name="duree_saisie" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
-                                            </div>      
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="odometer" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-calendar form-control-icon"></span>
-                                                    <field name="odometer" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
-                                            </div>      
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="description" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-align-justify form-control-icon"></span>
-                                                    <field name="description" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="description" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                                </div>
+                                                <field name="description" attrs="{'readonly': [('state', '!=', ('draft'))]}" class="form-control"/>
                                             </div>      
                                         </div>
                                     </div>

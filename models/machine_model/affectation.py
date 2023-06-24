@@ -21,7 +21,7 @@ class fleet_vehicle_chantier_affectation(models.Model):
     capacity = fields.Char(string='Capacité',
                                  related="vehicle_id.capacity",store=True,readonly=True)
 
-    brand_id = fields.Many2one('fleet.vehicle.brand',string='Marque',
+    brand_id = fields.Many2one('fleet.vehicle.brand','Marque',
                                  related="vehicle_id.brand_id",store=True,readonly=True)
 
     type = fields.Many2one(string='Type',related="vehicle_id.designation_id",store=True,readonly=True)

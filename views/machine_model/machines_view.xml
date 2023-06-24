@@ -142,52 +142,47 @@
                                     <div class="card-body text-dark">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="driver_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-user form-control-icon"></span>
-                                                        <field name="driver_id" options="{'no_create': True, 'no_open': True}" domain="['|', ('company_id', '=', False ), ('company_id', '=', company_id)]" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="driver_id" class=""/></span>
+                                                    </div>
+                                                    <field name="driver_id" options="{'no_create': True, 'no_open': True}" domain="['|', ('company_id', '=', False ), ('company_id', '=', company_id)]" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="chantier_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-city form-control-icon"></span>
-                                                        <field name="chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="chantier_id" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                                    </div>
+                                                    <field name="chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="emplacement_chantier_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-users form-control-icon"></span>
-                                                        <field name="emplacement_chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="emplacement_chantier_id" class=""/></span>
+                                                    </div>
+                                                    <field name="emplacement_chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="company_id" string="Organisme" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-building form-control-icon"></span>
-                                                        <field name="company_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="company_id" class=""/></span>
+                                                    </div>
+                                                    <field name="company_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <label for="notes" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-comment form-control-icon"></span>
-                                                        <field name="notes" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="notes" class=""/></span>
+                                                    </div>
+                                                    <field name="notes" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,70 +196,63 @@
                                     <div class="card-body text-dark">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="location_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-users form-control-icon"></span>
-                                                        <field name="location_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="location_id" class=""/></span>
+                                                    </div>
+                                                    <field name="location_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="code" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-barcode form-control-icon"></span>
-                                                        <field name="code" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="code" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                                    </div>
+                                                    <field name="code" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="capacity" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-warehouse form-control-icon"></span>
-                                                        <field name="capacity" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="capacity" class=""/></span>
+                                                    </div>
+                                                    <field name="capacity" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="vin_sn" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-file-contract form-control-icon"></span>
-                                                        <field name="vin_sn" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="vin_sn" class=""/></span>
+                                                    </div>
+                                                    <field name="vin_sn" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="brand_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-car form-control-icon"></span>
-                                                        <field name="brand_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="brand_id" class=""/></span>
+                                                    </div>
+                                                    <field name="brand_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="designation_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-align-center form-control-icon"></span>
-                                                        <field name="designation_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="designation_id" class=""/></span>
+                                                    </div>
+                                                    <field name="designation_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="category_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-car form-control-icon"></span>
-                                                        <field name="category_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="category_id" class=""/></span>
+                                                    </div>
+                                                    <field name="category_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,51 +268,46 @@
                                     <div class="card-body text-dark">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="odometer" string="Odomètre" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-tachometer-alt form-control-icon"></span>
-                                                        <field name="odometer" class="form-control oe_inline ml-1"/>
-                                                        <field name="odometer_unit" class="form-control oe_inline"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="Odomètre" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                                    </div>
+                                                    <field name="odometer" class="form-control oe_inline ml-1"/>
+                                                    <field name="odometer_unit" class="form-control oe_inline"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="pas_bouclage" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fa fa-repeat form-control-icon"></span>
-                                                        <field name="pas_bouclage" class="form-control "/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="pas_bouclage" class=""/></span>
+                                                    </div>
+                                                    <field name="pas_bouclage" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="seuil_bouclage" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fa fa-repeat form-control-icon"></span>
-                                                        <field name="seuil_bouclage" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="seuil_bouclage" class=""/></span>
+                                                    </div>
+                                                    <field name="seuil_bouclage" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="type_moteur" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-car form-control-icon"></span>
-                                                        <field name="type_moteur" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="type_moteur" class=""/></span>
+                                                    </div>
+                                                    <field name="type_moteur" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="numero_moteur" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-align-center form-control-icon"></span>
-                                                        <field name="numero_moteur" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="numero_moteur" class=""/></span>
+                                                    </div>
+                                                    <field name="numero_moteur" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -340,155 +323,139 @@
                                     <div class="card-body text-dark">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="partner_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-user form-control-icon"></span>
-                                                        <field name="partner_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="partner_id" class=""/></span>
+                                                    </div>
+                                                    <field name="partner_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="annee" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-calendar form-control-icon"></span>
-                                                        <field name="annee" class="form-control "/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="annee" class=""/></span>
+                                                    </div>
+                                                    <field name="annee" class="form-control "/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="contract_number" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-file-contract form-control-icon"></span>
-                                                        <field name="contract_number" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="contract_number" class=""/></span>
+                                                    </div>
+                                                    <field name="contract_number" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="mode_reglement" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
-                                                        <field name="mode_reglement" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="mode_reglement" class=""/></span>
+                                                    </div>
+                                                    <field name="mode_reglement" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="folder" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-folder form-control-icon"></span>
-                                                        <field name="folder" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="folder" class=""/></span>
+                                                    </div>
+                                                    <field name="folder" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="garantie_etat" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-certificate form-control-icon"></span>
-                                                        <field name="garantie_etat" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="garantie_etat" class=""/></span>
+                                                    </div>
+                                                    <field name="garantie_etat" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="date_debut_garantie" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-calendar form-control-icon"></span>
-                                                        <field name="date_debut_garantie" attrs="{'required':[('garantie','=',True)]}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="date_debut_garantie" class=""/></span>
+                                                    </div>
+                                                    <field name="date_debut_garantie" attrs="{'required':[('garantie','=',True)]}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="date_fin_garantie" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-calendar form-control-icon"></span>
-                                                        <field name="date_fin_garantie" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="date_fin_garantie" class=""/></span>
+                                                    </div>
+                                                    <field name="date_fin_garantie" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="date_delivery" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-calendar form-control-icon"></span>
-                                                        <field name="date_delivery" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="date_delivery" class=""/></span>
+                                                    </div>
+                                                    <field name="date_delivery" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="date_mise_service" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-calendar form-control-icon"></span>
-                                                        <field name="date_mise_service" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="date_mise_service" class=""/></span>
+                                                    </div>
+                                                    <field name="date_mise_service" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="date_acquisition" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-calendar form-control-icon"></span>
-                                                        <field name="date_acquisition" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="date_acquisition" class=""/></span>
+                                                    </div>
+                                                    <field name="date_acquisition" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="acquisition_date" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-calendar form-control-icon"></span>
-                                                        <field name="acquisition_date" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="acquisition_date" class=""/></span>
+                                                    </div>
+                                                    <field name="acquisition_date" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label for="acquisition_amount" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
-                                                        <field name="acquisition_amount"  widget="monetary" options="{'currency_field': 'currency_id'}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="acquisition_amount" class=""/></span>
+                                                    </div>
+                                                    <field name="acquisition_amount"  widget="monetary" options="{'currency_field': 'currency_id'}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label for="taxes_id" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
-                                                        <field name="taxes_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="taxes_id" class=""/></span>
+                                                    </div>
+                                                    <field name="taxes_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label for="montant_tva" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
-                                                        <field name="montant_tva" widget="monetary" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="montant_tva" class=""/></span>
+                                                    </div>
+                                                    <field name="montant_tva" widget="monetary" class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label for="montant_total" class=""/>
-                                                <div class="main">
-                                                    <div class="form-group">
-                                                        <span class="fas fa-money-bill-wave form-control-icon"></span>
-                                                        <field name="montant_total" widget="monetary" class="form-control"/>
-                                                    </div>  
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><label for="montant_total" class=""/></span>
+                                                    </div>
+                                                    <field name="montant_total" widget="monetary" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>

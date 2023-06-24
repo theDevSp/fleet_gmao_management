@@ -36,46 +36,42 @@
                             <div class="card-body text-dark">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="vehicle_id" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fa fa-car form-control-icon"></span>
-                                                <field name="vehicle_id" class="form-control" options="{'no_create':True, 'no_open':True}"/>
-                                            </div>  
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="vehicle_id" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="vehicle_id" class="form-control" options="{'no_create':True, 'no_open':True}"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="document_id" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fa fa-file-text form-control-icon"></span>
-                                                <field name="document_id" class="form-control" options="{'no_create': True, 'no_open': True}"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="document_id" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="document_id" class="form-control" options="{'no_create': True, 'no_open': True}"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="date_start" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-calendar form-control-icon"></span>
-                                                <field name="date_start" class="form-control"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="date_start" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="date_start" class="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="date_end" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-calendar form-control-icon"></span>
-                                                <field name="date_end" class="form-control"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="date_end" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="date_end" class="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
