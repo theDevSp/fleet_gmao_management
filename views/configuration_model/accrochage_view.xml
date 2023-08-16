@@ -23,35 +23,32 @@
                             <div class="card-body text-dark">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="vehicle_id" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-car form-control-icon"></span>
-                                                <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                            </div>  
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="vehicle_id" class=""/></span>
+                                            </div>
+                                            <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="related_vehicle_id" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-car form-control-icon"></span>
-                                                <field name="related_vehicle_id" class="form-control" options="{'no_create': True, 'no_open': True}"/>
-                                            </div>  
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="related_vehicle_id" class=""/></span>
+                                            </div>
+                                            <field name="related_vehicle_id" class="form-control" options="{'no_create': True, 'no_open': True}"/>
                                         </div>      
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="date" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-calendar form-control-icon"></span>
-                                                <field name="date" class="form-control"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="date" class=""/></span>
+                                            </div>
+                                            <field name="date" class="form-control"/>
+                                        </div>   
                                     </div>
                                 </div>
                             </div>

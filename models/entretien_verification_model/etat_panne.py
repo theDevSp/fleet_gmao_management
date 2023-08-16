@@ -11,7 +11,7 @@ class mro_order(models.Model):
         ('cm', 'Corrective'),
     ]
 
-    name = fields.Char("Réf", default="New")
+    name = fields.Char("Réf", default="New", required = True)
     maintenance_type = fields.Selection(MAINTENANCE_TYPE_SELECTION, 'Maintenance Type', required=True
                                         # ,readonly=True, states={'draft': [('readonly', False)]}
                                         )

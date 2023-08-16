@@ -18,11 +18,42 @@
         <field name="arch" type="xml">
             <form string="Tableaux d'entretien template">
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="designation_id" options="{'no_create': True, 'no_open': True}"/>
-                        <field name="type_id" required="1" options="{'no_create': True, 'no_open': True}"/>
-                    </group>
+                    <center>
+                        <div class="card border-dark mt-3 bg-light" style="max-width: 30em;text-align:left;">
+                            <div class="card-body text-dark">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="name" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="name" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="designation_id" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="designation_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="type_id" class=""/></span>
+                                            </div>
+                                            <field name="type_id" required="1" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>                
                     <notebook>
                         <page string="Remplacement">
                             <field name="reparation_ids">

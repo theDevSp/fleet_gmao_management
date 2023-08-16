@@ -22,24 +22,22 @@
                             <div class="card-body text-dark">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="name" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-align-center form-control-icon"></span>
-                                                <field name="name" class="form-control"/>
-                                            </div>  
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="name" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="name" class="form-control"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="note" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-comment form-control-icon"></span>
-                                                <field name="note" class="form-control"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="note" class=""/></span>
+                                            </div>
+                                            <field name="note" class="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

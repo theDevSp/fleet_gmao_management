@@ -24,45 +24,42 @@
                             <div class="card-body text-dark">
                                 <div class="row" attrs="{'invisible':[('sans_suivi','=',True)]}">
                                     <div class="col-md-12">
-                                        <label for="name" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-align-justify form-control-icon"></span>
-                                                <field name="name" class="form-control" attrs="{'invisible':[('sans_suivi','=',True)]}"/>
-                                            </div>  
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="name" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="name" class="form-control" attrs="{'invisible':[('sans_suivi','=',True)]}"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="sans_suivi" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <field name="sans_suivi" widget="boolean_toggle"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">  
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="sans_suivi" class=""/></span>
+                                            </div>
+                                            <field name="sans_suivi" widget="boolean_toggle"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="pas_bouclage" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-clock form-control-icon"></span>
-                                                <field name="pas_bouclage" class="form-control"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="pas_bouclage" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="pas_bouclage" class="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label for="seuil_bouclage" class=""/>
-                                        <div class="main">
-                                            <div class="form-group">
-                                                <span class="fas fa-clock form-control-icon"></span>
-                                                <field name="seuil_bouclage" class="form-control"/>
-                                            </div>  
-                                        </div>      
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" ><label for="seuil_bouclage" class=""/><i class="fas fa-exclamation-triangle"></i></span>
+                                            </div>
+                                            <field name="seuil_bouclage" class="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

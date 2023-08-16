@@ -5,7 +5,7 @@ class fleet_filtre_template_type(models.Model):
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 	_description = 'Modèle Révision'
 
-	name = fields.Char('Nom', readonly=True)
+	name = fields.Char('Nom', readonly=True, required = True)
 	pas_bouclage = fields.Integer("Pas de bouclage", required=True)
 	seuil_bouclage = fields.Integer("Seuil de bouclage", required=True)
 	sans_suivi = fields.Boolean('Machines sans révision')

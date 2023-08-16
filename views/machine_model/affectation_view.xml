@@ -50,104 +50,93 @@
                                 <div class="card-body text-dark">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="vehicle_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-car form-control-icon"></span>
-                                                    <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="vehicle_id" class=""/></span>
+                                                </div>
+                                                <field name="vehicle_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="brand_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-barcode form-control-icon"></span>
-                                                    <field name="brand_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                </div>  
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="vehicle_chantier_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-city form-control-icon"></span>
-                                                    <field name="vehicle_chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                </div>  
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="emplacement_source_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-users form-control-icon"></span>
-                                                    <field name="emplacement_source_id" domain="[('chantier_ids','=',vehicle_chantier_id)]" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="brand_id" class=""/></span>
+                                                </div>
+                                                <field name="brand_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="chantier_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-city form-control-icon"></span>
-                                                    <field name="chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="vehicle_chantier_id" class=""/></span>
+                                                </div>
+                                                <field name="vehicle_chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="emplacement_chantier_id" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fa fa-users form-control-icon"></span>
-                                                    <field name="emplacement_chantier_id" domain="[('chantier_ids','=',chantier_id)]" options="{'no_create': True, 'no_open': True}" class="form-control" />
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="emplacement_source_id" class=""/></span>
+                                                </div>
+                                                <field name="emplacement_source_id" domain="[('chantier_ids','=',vehicle_chantier_id)]" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="chantier_id" class=""/></span>
+                                                </div>
+                                                <field name="chantier_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="emplacement_chantier_id" class=""/></span>
+                                                </div>
+                                                <field name="emplacement_chantier_id" domain="[('chantier_ids','=',chantier_id)]" options="{'no_create': True, 'no_open': True}" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
 
-
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="date_start" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fa fa-calendar form-control-icon"></span>
-                                                    <field name="date_start" string="Date de transfert" class="form-control" />
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="date_start" class=""/></span>
+                                                </div>
+                                                <field name="date_start" string="Date de transfert" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="date_end" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fa fa-calendar form-control-icon"></span>
-                                                    <field name="date_end" class="form-control" />
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="date_end" class=""/></span>
+                                                </div>
+                                                <field name="date_end" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="type" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fa fa-align-center form-control-icon"></span>
-                                                    <field name="type" options="{'no_create': True, 'no_open': True}" class="form-control" />
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="type" class=""/></span>
+                                                </div>
+                                                <field name="type" options="{'no_create': True, 'no_open': True}" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="notes" class=""/>
-                                            <div class="main">
-                                                <div class="form-group">
-                                                    <span class="fas fa-comment form-control-icon"></span>
-                                                    <field name="notes" placeholder='Informations supplémentaires...' nolabel="1" class="form-control"/>
-                                                </div>  
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><label for="notes" class=""/></span>
+                                                </div>
+                                                <field name="notes" placeholder='Informations supplémentaires...' nolabel="1" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -189,7 +178,7 @@
                     <field name="chantier_id" icon="fa-city" enable_counters="1" select="multi"/>
                     <field name="vehicle_chantier_id" icon="fa-city" enable_counters="1" select="multi"/>
                     <field name="brand_id" icon="fa-barcode" enable_counters="1" select="multi"/>
-                    <field name="brand_id" icon="fa-align-center" enable_counters="1" select="multi"/>
+                    <field name="type" icon="fa-align-center" enable_counters="1" select="multi"/>
                 </searchpanel>
             </search>
         </field>

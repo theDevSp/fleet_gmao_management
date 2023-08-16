@@ -6,7 +6,7 @@ class ClasseMachine(models.Model):
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 	
 
-	name = fields.Char('Libellé')
+	name = fields.Char('Libellé', required = True)
 	description = fields.Char('Description')
 
 	
