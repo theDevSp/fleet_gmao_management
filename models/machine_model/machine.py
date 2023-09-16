@@ -41,7 +41,7 @@ class FleetVehicle(models.Model):
 	folder = fields.Char('Numéro de dossier')
 	annee = fields.Char("Année", default=datetime.date.today())
 	mode_reglement = fields.Selection([('autofinancement', 'Autofinancement'), ('leasing', 'Leasing')],
-	                                  u"Mode règlement")
+	                                u"Mode règlement")
 	state_breakdown = fields.Selection([('disponible', 'Disponible'),
 	                                    ('panne_marche', 'En panne marche'),
 	                                    ('panne_arret', 'En panne arret'),
@@ -86,8 +86,3 @@ class FleetVehicle(models.Model):
 
 		return res
 
-	def write(self, vals):
-		group_long_name = "gmao.group_product_admin"
-		if not self.env['res.users'].has_group(group_long_name):
-			raise UserError("Erreur droit d'accès! \n Vous n'êtes pas autorisé à modfier un engin!")
-		return super(FleetVehicle, self).write(vals)
