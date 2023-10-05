@@ -40,8 +40,7 @@ class FleetVehicle(models.Model):
 	contract_number = fields.Char('Numéro Contrat')
 	folder = fields.Char('Numéro de dossier')
 	annee = fields.Char("Année", default=datetime.date.today())
-	mode_reglement = fields.Selection([('autofinancement', 'Autofinancement'), ('leasing', 'Leasing')],
-	                                u"Mode règlement")
+	mode_reglement = fields.Selection([('autofinancement', 'Autofinancement'), ('leasing', 'Leasing')],u"Mode règlement")
 	state_breakdown = fields.Selection([('disponible', 'Disponible'),
 	                                    ('panne_marche', 'En panne marche'),
 	                                    ('panne_arret', 'En panne arret'),
@@ -60,6 +59,14 @@ class FleetVehicle(models.Model):
 
 	numero_moteur = fields.Char("Numéro de série du moteur")
 	type_moteur = fields.Many2one('fleet.vehicle.motor.type', u"Type moteur")
+
+	def name_get(self):
+		result = []
+		for vehicle in self:
+			name = vehicle.code
+			result.append((vehicle.id, name))
+
+		return result
 
 	@api.depends('taxes_id')
 	def _compute_tva(self):
