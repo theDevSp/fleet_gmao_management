@@ -93,3 +93,22 @@ class FleetVehicle(models.Model):
 
 		return res
 
+	@api.model
+	def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
+		args = args or []
+		domain = []
+		if name:
+			domain = ['|', ('license_plate', operator, name), ('code', operator, name)]
+        
+		return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)  
+
+
+	
+	def name_get(self):
+		result = []
+        
+		for rec in self:
+			name = rec.code
+			result.append((rec.id, name))
+		return result 
+
