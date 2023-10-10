@@ -98,7 +98,7 @@ class FleetVehicle(models.Model):
 		args = args or []
 		domain = []
 		if name:
-			domain = ['|', ('license_plate', operator, name), ('code', operator, name)]
+			domain = [('code', operator, name)]
         
 		return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)  
 
